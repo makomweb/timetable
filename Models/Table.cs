@@ -12,10 +12,9 @@ namespace Timetable.Models
 
         public Subject(string name)
         {
-            Name = Name;
+            Name = name;
         }
     }
-
     public abstract class Item
     {
         public DateTime Begin { get; }
