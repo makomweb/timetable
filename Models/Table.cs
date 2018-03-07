@@ -39,24 +39,68 @@ namespace Timetable.Models
         public override string Type => nameof(Break);
     }
 
-    public class BlockStartTimes
+    public class BlockStartTime
     {
-        private List<DateTime> _begins = new List<DateTime>();
+        private List<DateTime> _startTimes = new List<DateTime>();
 
-        public BlockStartTimes(IEnumerable<string> times)
+        public BlockStartTime(IEnumerable<string> startTimes)
         {
             const string format = "hh:mm:ss";
 
-            foreach (var t in times)
+            foreach (var t in startTimes)
             {
-                _begins.Add(DateTime.ParseExact(t, format, CultureInfo.InvariantCulture));
+                _startTimes.Add(DateTime.ParseExact(t, format, CultureInfo.InvariantCulture));
             }
         }
 
-        public TimeSpan Begins(int block)
+        public TimeSpan TimeFor(int index)
         {
-            var b = _begins[block];
-            return b.TimeOfDay;
+            return _startTimes[index].TimeOfDay;
+        }
+
+        public DateTime For(int index)
+        {
+            var b = TimeFor(index);
+            return Convert.ToDateTime(b.ToString());
+        }
+    }
+
+    public class BreakStartTime
+    {
+        private readonly BlockStartTime _blockStartTime;
+        private readonly TimeSpan _blockDuration;
+
+        public BreakStartTime(BlockStartTime blockStartTime, TimeSpan blockDuration)
+        {
+            _blockStartTime = blockStartTime;
+            _blockDuration = blockDuration;
+        }
+
+        public DateTime For(int index)
+        {
+            var block = _blockStartTime.For(index);
+            return block.Add(_blockDuration);
+        }
+    }
+
+    public class BreakDuration
+    {
+        private readonly BlockStartTime _blockStartTime;
+        private readonly TimeSpan _blockDuration;
+        private readonly BreakStartTime _breakStart;
+
+        public BreakDuration(BlockStartTime blockStartTime, TimeSpan blockDuration, BreakStartTime breakStart)
+        {
+            _blockStartTime = blockStartTime;
+            _blockDuration = blockDuration;
+            _breakStart = breakStart;
+        }
+
+        public TimeSpan For(int index)
+        {
+            var breakStart = _breakStart.For(index);
+            var nextBlock = _blockStartTime.For(index + 1);
+            return nextBlock.Subtract(breakStart);
         }
     }
     
@@ -111,10 +155,27 @@ namespace Timetable.Models
             _table.Columns.Add("6", typeof(Item));
             _table.Columns.Add("7", typeof(Item));
             _table.Columns.Add("8", typeof(Item));
-            //_table.Rows.Add(1, "Deutsch", "Sport", "Mathe", "Deutsch", "Sachkunde");
-            //_table.Rows.Add(2, "Musik", "Sport", "Sachkunde", "Mathe", "Englisch");
+            _table.Columns.Add("9", typeof(Item));
+            _table.Columns.Add("10", typeof(Item));
+            _table.Columns.Add("11", typeof(Item));
 
-            _table.Rows.Add("Montag", new RegularBlock(DateTime.Now, "Deutsch"), new Break(DateTime.Now.Add(RegularBlock.DefaultDuration), TimeSpan.FromMinutes(15)), new RegularBlock(DateTime.Now, "Sport"));
+
+            var blockStart = new BlockStartTime(new[] { "07:55:00", "08:40:00", "09:45:00", "10:45:00", "11:50:00", "12:45:00" });
+            var breakStart = new BreakStartTime(blockStart, RegularBlock.DefaultDuration);
+            var breakDuration = new BreakDuration(blockStart, RegularBlock.DefaultDuration, breakStart);
+
+            _table.Rows.Add("Montag", 
+                new RegularBlock(blockStart.For(0), "Deutsch"),
+                new Break(breakStart.For(0), breakDuration.For(0)),
+                new RegularBlock(blockStart.For(1), "Musik"),
+                new Break(breakStart.For(1), breakDuration.For(1)),
+                new RegularBlock(blockStart.For(2), "Mathe"),
+                new Break(breakStart.For(2), breakDuration.For(2)),
+                new RegularBlock(blockStart.For(3), "Kunst"),
+                new Break(breakStart.For(3), breakDuration.For(3)),
+                new RegularBlock(blockStart.For(4), "Sachkunde"),
+                new Break(breakStart.For(4), breakDuration.For(4)),
+                new RegularBlock(blockStart.For(5), "Lebenskunde"));
         }
 
         public string ToJson()
