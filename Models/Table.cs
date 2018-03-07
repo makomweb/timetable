@@ -159,7 +159,7 @@ namespace Timetable.Models
             _table.Columns.Add("10", typeof(Item));
             _table.Columns.Add("11", typeof(Item));
             
-            var blockStart = new BlockStartTime(new[] { "07:55:00", "08:40:00", "09:45:00", "10:45:00", "11:50:00", "12:45:00" });
+            var blockStart = new BlockStartTime(new[] { "07:45:00", "08:40:00", "09:45:00", "10:45:00", "11:50:00", "12:45:00" });
             var breakStart = new BreakStartTime(blockStart, RegularBlock.DefaultDuration);
             var breakDuration = new BreakDuration(blockStart, RegularBlock.DefaultDuration, breakStart);
 
