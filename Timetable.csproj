@@ -43,6 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Block.cs" />
+    <Compile Include="Models\BlockFactory.cs" />
+    <Compile Include="Models\BlockStartTime.cs" />
+    <Compile Include="Models\Break.cs" />
+    <Compile Include="Models\BreakDuration.cs" />
+    <Compile Include="Models\BreakFactory.cs" />
+    <Compile Include="Models\BreakStartTime.cs" />
+    <Compile Include="Models\DoubleBlock.cs" />
+    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\RegularBlock.cs" />
+    <Compile Include="Models\Subject.cs" />
     <Compile Include="Models\Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
