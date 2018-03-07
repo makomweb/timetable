@@ -134,91 +134,50 @@ namespace Timetable.Models
         public override string Type => nameof(DoubleBlock);
     }
 
+    public class BlockFactory
+    {
+        private readonly BlockStartTime _startTime;
+
+        public BlockFactory(BlockStartTime startTime)
+        {
+            _startTime = startTime;
+        }
+
+        public RegularBlock CreateRegularBlock(int index, string subject)
+        {
+            return new RegularBlock(_startTime.For(index), subject);
+        }
+
+        public DoubleBlock CreateDoubleBlock(int index, string subject)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class BreakFactory
+    {
+        private readonly BreakStartTime _startTime;
+        private readonly BreakDuration _duration;
+
+        public BreakFactory(BreakStartTime startTime, BreakDuration duration)
+        {
+            _startTime = startTime;
+            _duration = duration;
+        }
+
+        public Break BreakAfter(int index)
+        {
+            return new Break(_startTime.For(index), _duration.For(index));
+        }
+    }
+
     public class Table
     {
-        private DataTable _table = new DataTable();
+        private DataTable _table;
         
-        public Table()
+        public Table(DataTable table)
         {
-            _table.Columns.Add("Tag", typeof(string));
-            _table.Columns.Add("1", typeof(Item));
-            _table.Columns.Add("2", typeof(Item));
-            _table.Columns.Add("3", typeof(Item));
-            _table.Columns.Add("4", typeof(Item));
-            _table.Columns.Add("5", typeof(Item));
-            _table.Columns.Add("6", typeof(Item));
-            _table.Columns.Add("7", typeof(Item));
-            _table.Columns.Add("8", typeof(Item));
-            _table.Columns.Add("9", typeof(Item));
-            _table.Columns.Add("10", typeof(Item));
-            _table.Columns.Add("11", typeof(Item));
-            
-            var blockStart = new BlockStartTime(new[] { "07:45:00", "08:40:00", "09:45:00", "10:45:00", "11:50:00", "12:45:00" });
-            var breakStart = new BreakStartTime(blockStart, RegularBlock.DefaultDuration);
-            var breakDuration = new BreakDuration(blockStart, RegularBlock.DefaultDuration, breakStart);
-
-            _table.Rows.Add("Montag", 
-                new RegularBlock(blockStart.For(0), "Deutsch"),
-                new Break(breakStart.For(0), breakDuration.For(0)),
-                new RegularBlock(blockStart.For(1), "Musik"),
-                new Break(breakStart.For(1), breakDuration.For(1)),
-                new RegularBlock(blockStart.For(2), "Mathe"),
-                new Break(breakStart.For(2), breakDuration.For(2)),
-                new RegularBlock(blockStart.For(3), "Kunst"),
-                new Break(breakStart.For(3), breakDuration.For(3)),
-                new RegularBlock(blockStart.For(4), "Sachkunde"),
-                new Break(breakStart.For(4), breakDuration.For(4)),
-                new RegularBlock(blockStart.For(5), "Lebenskunde"));
-
-            _table.Rows.Add("Dienstag",
-                new RegularBlock(blockStart.For(0), "Sport"),
-                new Break(breakStart.For(0), breakDuration.For(0)),
-                new RegularBlock(blockStart.For(1), "Sport"),
-                new Break(breakStart.For(1), breakDuration.For(1)),
-                new RegularBlock(blockStart.For(2), "Englisch"),
-                new Break(breakStart.For(2), breakDuration.For(2)),
-                new RegularBlock(blockStart.For(3), "Sachkunde"),
-                new Break(breakStart.For(3), breakDuration.For(3)),
-                new RegularBlock(blockStart.For(4), "Mathe"),
-                new Break(breakStart.For(4), breakDuration.For(4)),
-                new RegularBlock(blockStart.For(5), "Deutsch"));
-
-            _table.Rows.Add("Mittwoch",
-                new RegularBlock(blockStart.For(0), "Mathe"),
-                new Break(breakStart.For(0), breakDuration.For(0)),
-                new RegularBlock(blockStart.For(1), "Sachkunde"),
-                new Break(breakStart.For(1), breakDuration.For(1)),
-                new RegularBlock(blockStart.For(2), "Deutsch"),
-                new Break(breakStart.For(2), breakDuration.For(2)),
-                new RegularBlock(blockStart.For(3), "Deutsch"),
-                new Break(breakStart.For(3), breakDuration.For(3)),
-                new RegularBlock(blockStart.For(4), "Englisch"));
-
-            _table.Rows.Add("Donnerstag",
-                new RegularBlock(blockStart.For(0), "Deutsch"),
-                new Break(breakStart.For(0), breakDuration.For(0)),
-                new RegularBlock(blockStart.For(1), "Mathe"),
-                new Break(breakStart.For(1), breakDuration.For(1)),
-                new RegularBlock(blockStart.For(2), "Kunst"),
-                new Break(breakStart.For(2), breakDuration.For(2)),
-                new RegularBlock(blockStart.For(3), "Lebenskunde"),
-                new Break(breakStart.For(3), breakDuration.For(3)),
-                new RegularBlock(blockStart.For(4), "Sachkunde"),
-                new Break(breakStart.For(4), breakDuration.For(4)),
-                new RegularBlock(blockStart.For(5), "Musik"));
-
-            _table.Rows.Add("Freitag",
-                new RegularBlock(blockStart.For(0), "Sachkunde"),
-                new Break(breakStart.For(0), breakDuration.For(0)),
-                new RegularBlock(blockStart.For(1), "Englisch"),
-                new Break(breakStart.For(1), breakDuration.For(1)),
-                new RegularBlock(blockStart.For(2), "Sport"),
-                new Break(breakStart.For(2), breakDuration.For(2)),
-                new RegularBlock(blockStart.For(3), "Mathe"),
-                new Break(breakStart.For(3), breakDuration.For(3)),
-                new RegularBlock(blockStart.For(4), "Deutsch"),
-                new Break(breakStart.For(4), breakDuration.For(4)),
-                new RegularBlock(blockStart.For(5), "Deutsch"));
+            _table = table;
         }
 
         public string ToJson()
