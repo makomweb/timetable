@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Data;
 using Timetable.Models;
 
@@ -40,96 +41,72 @@ namespace Tests
         private static readonly BreakDuration _breakDuration = new BreakDuration(_blockStart, RegularBlock.DefaultDuration, _breakStart);
         private static readonly BlockFactory _blockFactory = new BlockFactory(_blockStart);
         private static readonly BreakFactory _breakFactory = new BreakFactory(_breakStart, _breakDuration);
+        private static readonly DayFactory _dayFactory = new DayFactory(_blockFactory, _breakFactory);
 
         public TestTable() : base(CreateTable())
         {
+        }
+
+        public class DayFactory
+        {
+            private readonly BlockFactory _blockFactory;
+            private readonly BreakFactory _breakFactory;
+
+            public DayFactory(BlockFactory blockFactory, BreakFactory breakFactory)
+            {
+                _blockFactory = blockFactory;
+                _breakFactory = breakFactory;
+            }
+
+            public object[] CreateDay(string name, params string[] subjects)
+            {
+                var items = new List<object> { name };
+
+                for (var i = 0; i < subjects.Length; i++)
+                {
+                    items.Add(_blockFactory.CreateRegularBlock(i, subjects[i]));
+
+                    // Check if a break has to be appended (there is no break after the last block)
+                    if (i < (subjects.Length - 1))
+                    {
+                        items.Add(_breakFactory.BreakAfter(i));
+                    }
+                }
+
+                return items.ToArray();
+            }
         }
 
         private static DataTable CreateTable()
         {
             var table = new DataTable();
 
-            table.Columns.Add("Tag", typeof(string));
+            table.Columns.Add("Day", typeof(string));
 
-            for (var i = 1; i < 20; i++)
+            const int maxSubjectsPerDay = 6;
+            const int maxItemsPerDay = maxSubjectsPerDay * 2; // subject is followed by a break
+
+            for (var i = 1; i < maxItemsPerDay; i++)
             {
                 table.Columns.Add(i + "", typeof(Item));
             }
 
-            table.Rows.Add("Montag",
-                Block(0, "Deutsch"),
-                Break(0),
-                Block(1, "Musik"),
-                Break(1),
-                Block(2, "Mathe"),
-                Break(2),
-                Block(3, "Kunst"),
-                Break(3),
-                Block(4, "Sachkunde"),
-                Break(4),
-                Block(5, "Lebenskunde"));
+            var monday = _dayFactory.CreateDay("Montag", "Deutsch", "Musik", "Mathe", "Kunst", "Sachkunde", "Lebenskunde");
+            table.Rows.Add(monday);
 
-            table.Rows.Add("Dienstag",
-                Block(0, "Sport"),
-                Break(0),
-                Block(1, "Sport"),
-                Break(1),
-                Block(2, "Englisch"),
-                Break(2),
-                Block(3, "Sachkunde"),
-                Break(3),
-                Block(4, "Mathe"),
-                Break(4),
-                Block(5, "Deutsch"));
+            var tuesday = _dayFactory.CreateDay("Dienstag", "Sport", "Sport", "Englisch", "Sachkunde", "Mathe", "Deutsch");
+            table.Rows.Add(tuesday);
 
-            table.Rows.Add("Mittwoch",
-                Block(0, "Mathe"),
-                Break(0),
-                Block(1, "Sachkunde"),
-                Break(1),
-                Block(2, "Deutsch"),
-                Break(2),
-                Block(3, "Deutsch"),
-                Break(3),
-                Block(4, "Englisch"));
+            var wednesday = _dayFactory.CreateDay("Mittwoch", "Mathe", "Sachkunde", "Deutsch", "Deutsch", "Englisch");
+            table.Rows.Add(wednesday);
 
-            table.Rows.Add("Donnerstag",
-                Block(0, "Deutsch"),
-                Break(0),
-                Block(1, "Mathe"),
-                Break(1),
-                Block(2, "Kunst"),
-                Break(2),
-                Block(3, "Lebenskunde"),
-                Break(3),
-                Block(4, "Sachkunde"),
-                Break(4),
-                Block(5, "Musik"));
+            var thursday = _dayFactory.CreateDay("Donnerstag", "Deutsch", "Mathe", "Kunst", "Lebenskunde", "Sachkunde", "Musik");
+            table.Rows.Add(thursday);
 
-            table.Rows.Add("Freitag",
-                Block(0, "Sachkunde"),
-                Break(0),
-                Block(1, "Englisch"),
-                Break(1),
-                Block(2, "Sport"),
-                Break(2),
-                Block(3, "Mathe"),
-                Break(3),
-                Block(4, "Deutsch"),
-                Break(4),
-                Block(5, "Deutsch"));
+            var friday = _dayFactory.CreateDay("Freitag", "Sachkunde", "Englisch", "Sport","Mathe", "Deutsch", "Deutsch");
+            table.Rows.Add(friday);
 
             return table;
-        }
-
-        private static Break Break(int index)
-        {
-            return _breakFactory.BreakAfter(index);
-        }
-
-        private static RegularBlock Block(int index, string subject)
-        {
-            return _blockFactory.CreateRegularBlock(index, subject);
         }
     }
 }
