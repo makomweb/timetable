@@ -45,14 +45,12 @@ namespace Timetable.Models
 
         public BlockStartTime(IEnumerable<string> startTimes)
         {
-            const string format = "hh:mm:ss";
-
             foreach (var t in startTimes)
             {
-                _startTimes.Add(DateTime.ParseExact(t, format, CultureInfo.InvariantCulture));
-            }
-        }
+                var ts = new TimeSpan(int.Parse(t.Split(':')[0]), int.Parse(t.Split(':')[1]), 0);
 
+                _startTimes.Add(ts);
+            }
         }
 
         public TimeSpan For(int index)
