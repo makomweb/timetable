@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 
 namespace Timetable.Models
 {
@@ -37,11 +38,30 @@ namespace Timetable.Models
 
         public override string Type => nameof(Break);
     }
+
+    public class BlockStartTimes
+    {
+        private List<DateTime> _begins = new List<DateTime>();
+
+        public BlockStartTimes(IEnumerable<string> times)
+        {
+            const string format = "hh:mm:ss";
+
+            foreach (var t in times)
+            {
+                _begins.Add(DateTime.ParseExact(t, format, CultureInfo.InvariantCulture));
+            }
+        }
+
+        public TimeSpan Begins(int block)
+        {
+            var b = _begins[block];
+            return b.TimeOfDay;
+        }
+    }
     
     public abstract class Block : Item
     {
-        public static string[] Starts = new[] { "07:55:00", "08:40:00", "09:45:00", "10:45:00", "11:50:00", "12:45:00" };
-
         public Subject Subject { get; }
 
         protected Block(Subject subject, DateTime begin, TimeSpan duration) : base(begin, duration)
