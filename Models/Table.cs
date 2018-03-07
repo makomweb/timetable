@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -8,6 +9,11 @@ namespace Timetable.Models
     public class Subject
     {
         public string Name { get; }
+
+        public Subject(string name)
+        {
+            Name = Name;
+        }
     }
 
     public abstract class Item
@@ -42,6 +48,10 @@ namespace Timetable.Models
 
     public class RegularBlock : Block
     {
+        public RegularBlock(DateTime begin, string name) : this(begin, new Subject(name))
+        {
+        }
+
         public RegularBlock(DateTime begin, Subject subject) : base(subject, begin, TimeSpan.FromMinutes(45))
         {
         }
@@ -56,13 +66,13 @@ namespace Timetable.Models
 
     public class DayColumn : DataColumn
     {
-        public string Day { get; }
+        public string Day => Caption;
 
         public IEnumerable<Item> Items { get; } = Enumerable.Empty<Item>();
 
         public DayColumn(string day, IEnumerable<Item> items = null)
         {
-            Day = day;
+            Caption = day;
             Items = items;
         }
     }
@@ -70,14 +80,22 @@ namespace Timetable.Models
     public class Table
     {
         private DataTable _table = new DataTable();
-
+        
         public Table()
         {
-            _table.Columns.Add(new DayColumn("Montag"));
-            _table.Columns.Add(new DayColumn("Dienstag"));
-            _table.Columns.Add(new DayColumn("Mittwoch"));
-            _table.Columns.Add(new DayColumn("Donnerstag"));
-            _table.Columns.Add(new DayColumn("Freitag"));
+            _table.Columns.Add("Stunde", typeof(int));
+            _table.Columns.Add("Montag", typeof(string));
+            _table.Columns.Add("Dienstag", typeof(string));
+            _table.Columns.Add("Mittwoch", typeof(string));
+            _table.Columns.Add("Donnerstag", typeof(string));
+            _table.Columns.Add("Freitag", typeof(string));
+            _table.Rows.Add(1, "Deutsch", "Sport", "Mathe", "Deutsch", "Sachkunde");
+            _table.Rows.Add(2, "Musik", "Sport", "Sachkunde", "Mathe", "Englisch");
+        }
+
+        public string ToJson()
+        {
+            return JsonConvert.SerializeObject(_table);
         }
     }
 }

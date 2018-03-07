@@ -10,7 +10,7 @@ namespace Tests
         public void When_serializing_table_it_should_return_json()
         {
             var table = new Table();
-            var json = Serialization.ToJson(table);
+            var json = table.ToJson();
             Assert.IsFalse(string.IsNullOrEmpty(json), "JSON string should not be null or empty!");
         }
     }
