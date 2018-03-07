@@ -17,11 +17,11 @@ namespace Timetable.Models
     }
     public abstract class Item
     {
-        public DateTime Begin { get; }
+        public TimeSpan Begin { get; }
 
         public TimeSpan Duration { get; }
 
-        protected Item(DateTime begin, TimeSpan duration)
+        protected Item(TimeSpan begin, TimeSpan duration)
         {
             Begin = begin;
             Duration = duration;
@@ -32,7 +32,7 @@ namespace Timetable.Models
     
     public class Break : Item
     {
-        public Break(DateTime begin, TimeSpan duration) : base(begin, duration)
+        public Break(TimeSpan begin, TimeSpan duration) : base(begin, duration)
         {
         }
 
@@ -41,7 +41,7 @@ namespace Timetable.Models
 
     public class BlockStartTime
     {
-        private List<DateTime> _startTimes = new List<DateTime>();
+        private List<TimeSpan> _startTimes = new List<TimeSpan>();
 
         public BlockStartTime(IEnumerable<string> startTimes)
         {
@@ -53,15 +53,11 @@ namespace Timetable.Models
             }
         }
 
-        public TimeSpan TimeFor(int index)
-        {
-            return _startTimes[index].TimeOfDay;
         }
 
-        public DateTime For(int index)
+        public TimeSpan For(int index)
         {
-            var b = TimeFor(index);
-            return Convert.ToDateTime(b.ToString());
+            return _startTimes[index];
         }
     }
 
@@ -76,7 +72,7 @@ namespace Timetable.Models
             _blockDuration = blockDuration;
         }
 
-        public DateTime For(int index)
+        public TimeSpan For(int index)
         {
             var block = _blockStartTime.For(index);
             return block.Add(_blockDuration);
@@ -108,7 +104,7 @@ namespace Timetable.Models
     {
         public Subject Subject { get; }
 
-        protected Block(Subject subject, DateTime begin, TimeSpan duration) : base(begin, duration)
+        protected Block(Subject subject, TimeSpan begin, TimeSpan duration) : base(begin, duration)
         {
             Subject = subject;
         }
@@ -116,11 +112,11 @@ namespace Timetable.Models
     
     public class RegularBlock : Block
     {
-        public RegularBlock(DateTime begin, string name) : this(begin, new Subject(name))
+        public RegularBlock(TimeSpan begin, string name) : this(begin, new Subject(name))
         {
         }
 
-        public RegularBlock(DateTime begin, Subject subject) : base(subject, begin, DefaultDuration)
+        public RegularBlock(TimeSpan begin, Subject subject) : base(subject, begin, DefaultDuration)
         {
         }
 
@@ -131,7 +127,7 @@ namespace Timetable.Models
     
     public class DoubleBlock : Block
     {
-        public DoubleBlock(DateTime begin, Subject subject) : base(subject, begin, DefaultDuration)
+        public DoubleBlock(TimeSpan begin, Subject subject) : base(subject, begin, DefaultDuration)
         {
         }
 

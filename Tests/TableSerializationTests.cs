@@ -17,9 +17,18 @@ namespace Tests
         [TestMethod]
         public void When_getting_second_block_start_time_it_should_succeed()
         {
-            var times = new BlockStartTime(new[] { "07:55:00", "08:40:00", "09:45:00", "10:45:00", "11:50:00", "12:45:00" });
-            var t = times.TimeFor(1);
+            var time = new BlockStartTime(new[] { "07:55", "08:40", "09:45", "10:45", "11:50", "12:45" });
+            var t = time.For(1);
             Assert.AreEqual("08:40:00", t.ToString());
+        }
+
+        [TestMethod]
+        public void When_getting_last_block_start_time_it_should_succeed()
+        {
+            var time = new BlockStartTime(new[] { "07:45", "08:40", "09:45", "10:45", "11:50", "12:45" });
+            var t = time.For(5);
+            Assert.AreEqual("12:45:00", t.ToString());
+
         }
     }
 }
