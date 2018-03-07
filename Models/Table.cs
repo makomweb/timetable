@@ -40,6 +40,8 @@ namespace Timetable.Models
     
     public abstract class Block : Item
     {
+        public static string[] Starts = new[] { "07:55:00", "08:40:00", "09:45:00", "10:45:00", "11:50:00", "12:45:00" };
+
         public Subject Subject { get; }
 
         protected Block(Subject subject, DateTime begin, TimeSpan duration) : base(begin, duration)
