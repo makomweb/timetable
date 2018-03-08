@@ -7,7 +7,7 @@ namespace Tests
     public class TableSerializationTests
     {
         [TestMethod]
-        public void When_serializing_table_it_should_return_json()
+        public void When_serializing_to_json_it_should_succeed()
         {
             var table = new TestTable();
             var json = table.ToJson();
@@ -28,7 +28,14 @@ namespace Tests
             var time = new BlockStartTime(new[] { "07:45", "08:40", "09:45", "10:45", "11:50", "12:45" });
             var t = time.For(5);
             Assert.AreEqual("12:45:00", t.ToString());
+        }
 
+        [TestMethod]
+        public void When_serializing_to_ics_it_should_succeed()
+        {
+            var table = new TestTable();
+            var ics = table.ToIcs();
+            Assert.IsFalse(string.IsNullOrEmpty(ics), "ICS string should not be null or empty!");
         }
     }
 }

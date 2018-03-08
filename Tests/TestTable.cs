@@ -54,7 +54,7 @@ namespace Tests
             table.Columns.Add("Day", typeof(string));
 
             const int maxSubjectsPerDay = 6;
-            const int maxItemsPerDay = maxSubjectsPerDay * 2; // subject is followed by a break
+            const int maxItemsPerDay = maxSubjectsPerDay * 2; // every subject is followed by a break
 
             for (var i = 1; i < maxItemsPerDay; i++)
             {
