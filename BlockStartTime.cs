@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Timetable.Models
+namespace Timetable
 {
     public class BlockStartTime
     {

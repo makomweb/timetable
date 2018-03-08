@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Data;
 
-namespace Timetable.Models
+namespace Timetable
 {
     public class Table
     {

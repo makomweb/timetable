@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Timetable.Models;
+using Timetable;
 
 namespace Tests
 {

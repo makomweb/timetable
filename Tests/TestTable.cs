@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using Timetable.Models;
+using Timetable;
 
 namespace Tests
 {
