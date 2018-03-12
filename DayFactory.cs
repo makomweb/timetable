@@ -1,6 +1,8 @@
 ﻿using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace Timetable
 {
@@ -31,9 +33,49 @@ namespace Timetable
             return day;
         }
 
+        private string Name => GetType().Name.ToString();
+
         public bool IsSame(DayOfWeek dayOfWeek)
         {
-            return nameof(GetType) == dayOfWeek.ToString();
+            return Name == dayOfWeek.ToString();
+        }
+
+        public string ToIcs(DateTime day)
+        {
+            var sb = new StringBuilder();
+            foreach (var block in Items.OfType<Block>())
+            {
+                var ics = block.ToIcs(day);
+                sb.AppendLine(ics);
+            }
+
+            return sb.ToString();
+        }
+
+        public DateTime Date(DateTime startOfWeek)
+        {
+            var day = startOfWeek;
+            switch (Name)
+            {
+                case "Monday":
+                    break;
+                case "Tuesday":
+                    day = startOfWeek.AddDays(1);
+                    break;
+                case "Wednesday":
+                    day = startOfWeek.AddDays(2);
+                    break;
+                case "Thursday":
+                    day = startOfWeek.AddDays(3);
+                    break;
+                case "Friday":
+                    day = startOfWeek.AddDays(4);
+                    break;
+                default:
+                    throw new NotSupportedException($"Unknown day type '{Name}'!");
+            }
+
+            return day;
         }
     }
 
