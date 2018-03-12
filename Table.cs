@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -9,21 +8,21 @@ namespace Timetable
 {
     public class Table
     {
-        private DataTable _table;
-        
-        public Table(DataTable table)
+        private IEnumerable<Weekday> _days;
+
+        public Table(IEnumerable<Weekday> days)
         {
-            _table = table;
+            _days = days;
         }
 
         public string ToJson()
         {
-            return JsonConvert.SerializeObject(_table);
+            return JsonConvert.SerializeObject(_days);
         }
 
-        public IEnumerable<object> At(int index)
+        public Weekday At(DayOfWeek dayOfWeek)
         {
-            return _table.Rows[index].ItemArray;
+            return _days.First(d => d.IsSame(dayOfWeek));
         }
 
         public string ToIcs()
@@ -52,9 +51,9 @@ namespace Timetable
             // loop over the days of the week.
             for (var i = 0; i < 5; i++)
             {
-                var dayRow = At(i);
-                var e = CreateEvents(startOfWeek, dayRow);
-                sb.AppendLine(e);
+               // var dayRow = At(i);
+                //var e = CreateEvents(startOfWeek, dayRow);
+                //sb.AppendLine(e);
             }
 
             //end calendar item

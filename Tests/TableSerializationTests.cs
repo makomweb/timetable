@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using Timetable;
 
 namespace Tests
@@ -9,8 +10,7 @@ namespace Tests
         [TestMethod]
         public void When_serializing_to_json_it_should_succeed()
         {
-            var time = new BlockStartTime(new[] { "07:45", "08:40", "09:45", "10:45", "11:50", "12:45" });
-            var table = new TestTable(time);
+            var table = new ToniTable();
             var json = table.ToJson();
             Assert.IsFalse(string.IsNullOrEmpty(json), "JSON string should not be null or empty!");
         }
@@ -44,29 +44,34 @@ namespace Tests
             var time = new BlockStartTime(new[] { "08:00:00", "10:00:00", "12:00:00", "13:45:00" });
             Assert.AreEqual("DoubleBlock", time.BlockType);
         }
+
+        [TestMethod]
+        public void Serializing_day_of_week_should_succeed()
+        {
+            var d = DayOfWeek.Monday.ToString();
+            Assert.AreEqual("Monday", d);
+        }
     }
 
     [TestClass]
-    public class ToniSchedule
+    public class ToniTableTests
     {
         [TestMethod]
         public void Serialize_to_ics()
         {
-            var blockStart = new BlockStartTime(new[] { "07:45:00", "08:40:00", "09:45:00", "10:45:00", "11:50:00", "12:45:00" });
-            var table = new TestTable(blockStart);
+            var table = new ToniTable();
             var ics = table.ToIcs();
             Assert.IsFalse(string.IsNullOrEmpty(ics), "ICS string should not be null or empty!");
         }
     }
 
     [TestClass]
-    public class JannisSchedule
+    public class JannisTableTests
     {
         [TestMethod]
         public void Serialize_to_ics()
         {
-            var blockStart = new BlockStartTime(new[] { "08:00:00", "10:00:00", "12:00:00", "13:45:00" });
-            var table = new TestTable(blockStart);
+            var table = new JannisTableB();
             var ics = table.ToIcs();
             Assert.IsFalse(string.IsNullOrEmpty(ics), "ICS string should not be null or empty!");
         }
