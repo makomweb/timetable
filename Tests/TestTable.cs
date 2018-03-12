@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 ﻿using System.Data;
 using Timetable;
 
@@ -6,23 +5,11 @@ namespace Tests
 {
     public class TestTable : Table
     {
-#if false
-        // Toni
-        private static readonly BlockStartTime _blockStart = new BlockStartTime(new[] { "07:45:00", "08:40:00", "09:45:00", "10:45:00", "11:50:00", "12:45:00" });
-#else
-        // Jannis
-        private static readonly BlockStartTime _blockStart = new BlockStartTime(new[] { "08:00:00", "10:00:00", "12:00:00", "13:45:00" });
-#endif
-        private static readonly DayFactory _dayFactory = DayFactory.Create(_blockStart);
-
-        public TestTable() : base(CreateTable())
+        public TestTable(BlockStartTime blockStart) : base(CreateTable(DayFactory.Create(blockStart)))
         {
         }
 
-        {
-        }
-
-        private static DataTable CreateTable()
+        private static DataTable CreateTable(DayFactory dayFactory)
         {
             var table = new DataTable();
 
@@ -73,19 +60,19 @@ namespace Tests
 #endif
 
             // B-Woche: 12. März 2018
-            var monday = _dayFactory.CreateDay("Montag", null, "Deutsch", "Englisch", "Kunst");
+            var monday = dayFactory.CreateDay("Montag", null, "Deutsch", "Englisch", "Kunst");
             table.Rows.Add(monday);
 
-            var tuesday = _dayFactory.CreateDay("Dienstag", "Französisch", "Informatik", "Mathe");
+            var tuesday = dayFactory.CreateDay("Dienstag", "Französisch", "Informatik", "Mathe");
             table.Rows.Add(tuesday);
 
-            var wednesday = _dayFactory.CreateDay("Mittwoch", "Englisch", "Musik", "Sport", "Französisch");
+            var wednesday = dayFactory.CreateDay("Mittwoch", "Englisch", "Musik", "Sport", "Französisch");
             table.Rows.Add(wednesday);
 
-            var thursday = _dayFactory.CreateDay("Donnerstag", "Chemie/Physik", "Geschichte", "Ethik");
+            var thursday = dayFactory.CreateDay("Donnerstag", "Chemie/Physik", "Geschichte", "Ethik");
             table.Rows.Add(thursday);
 
-            var friday = _dayFactory.CreateDay("Freitag", "Sport", "Biologie", "Mathematik");
+            var friday = dayFactory.CreateDay("Freitag", "Sport", "Biologie", "Mathematik");
             table.Rows.Add(friday);
 #endif
             return table;
