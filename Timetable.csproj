@@ -53,6 +53,7 @@
     <Compile Include="BreakDuration.cs" />
     <Compile Include="BreakFactory.cs" />
     <Compile Include="BreakStartTime.cs" />
+    <Compile Include="DayFactory.cs" />
     <Compile Include="DoubleBlock.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="RegularBlock.cs" />
