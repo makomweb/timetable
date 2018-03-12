@@ -9,7 +9,8 @@ namespace Tests
         [TestMethod]
         public void When_serializing_to_json_it_should_succeed()
         {
-            var table = new TestTable();
+            var time = new BlockStartTime(new[] { "07:45", "08:40", "09:45", "10:45", "11:50", "12:45" });
+            var table = new TestTable(time);
             var json = table.ToJson();
             Assert.IsFalse(string.IsNullOrEmpty(json), "JSON string should not be null or empty!");
         }
