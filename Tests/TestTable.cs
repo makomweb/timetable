@@ -6,7 +6,13 @@ namespace Tests
 {
     public class TestTable : Table
     {
+#if false
+        // Toni
         private static readonly BlockStartTime _blockStart = new BlockStartTime(new[] { "07:45:00", "08:40:00", "09:45:00", "10:45:00", "11:50:00", "12:45:00" });
+#else
+        // Jannis
+        private static readonly BlockStartTime _blockStart = new BlockStartTime(new[] { "08:00:00", "10:00:00", "12:00:00", "13:45:00" });
+#endif
         private static readonly BreakStartTime _breakStart = new BreakStartTime(_blockStart, RegularBlock.DefaultDuration);
         private static readonly BreakDuration _breakDuration = new BreakDuration(_blockStart, RegularBlock.DefaultDuration, _breakStart);
         private static readonly BlockFactory _blockFactory = new BlockFactory(_blockStart);
@@ -61,6 +67,7 @@ namespace Tests
                 table.Columns.Add(i + "", typeof(Item));
             }
 
+#if fale
             // Toni
             var monday = _dayFactory.CreateDay("Montag", "Deutsch", "Musik", "Mathe", "Kunst", "Sachkunde", "Lebenskunde");
             table.Rows.Add(monday);
@@ -76,25 +83,41 @@ namespace Tests
 
             var friday = _dayFactory.CreateDay("Freitag", "Sachkunde", "Englisch", "Sport","Mathe", "Deutsch", "Deutsch");
             table.Rows.Add(friday);
-
-#if false
-            1. Block                        2. Block                        3. Block                    4. Block
-            8:00 - 9:40, 20 min Hofpause, 10:00 - 11:30, 30 min Hofpause, 12:00 - 13:30, 15 min Pause, 13:45 - 15:15
-
+#else
             // Jannis
-            // A-Woche:
-            Montag: Deutsch, Bio, Englisch
-            Dienstag: Mathe, Französisch, Chemie/Physik, Deutsch
-            Mittwoch: Kunst, Sport, Musik
-            Donnerstag: Deutsch, Informatik, Ethik, Klassenleiterstunde
-            Freitag: Erdkunde, Französisch, Mathe
+            // A-Woche: 5. März 2018
+#if false
+            var monday = _dayFactory.CreateDay("Montag", "Deutsch", "Biologie", "Englisch");
+            table.Rows.Add(monday);
+
+            var tuesday = _dayFactory.CreateDay("Dienstag", "Mathe", "Französisch", "Chemie/Physik", "Deutsch");
+            table.Rows.Add(tuesday);
+
+            var wednesday = _dayFactory.CreateDay("Mittwoch", "Kunst", "Sport", "Musik");
+            table.Rows.Add(wednesday);
+
+            var thursday = _dayFactory.CreateDay("Donnerstag", "Deutsch", "Informatik", "Ethik", "Klassenleiterstunde");
+            table.Rows.Add(thursday);
+
+            var friday = _dayFactory.CreateDay("Freitag", "Erdkunde", "Französisch", "Mathe");
+            table.Rows.Add(friday);
+#endif
 
             // B-Woche: 12. März 2018
-            Montag: (frei), Deutsch, Englisch, Kunst
-            Dienstag: Französisch, Informatik, Mathe
-            Mittwoch: Englisch, Musik, Sport, Französisch
-            Donnerstag: Deutsch, Chemie/Physik, Geschichte, Ethik
-            Freitag: Sport, Biologie, Mathematik
+            var monday = _dayFactory.CreateDay("Montag", null, "Deutsch", "Englisch", "Kunst");
+            table.Rows.Add(monday);
+
+            var tuesday = _dayFactory.CreateDay("Dienstag", "Französisch", "Informatik", "Mathe");
+            table.Rows.Add(tuesday);
+
+            var wednesday = _dayFactory.CreateDay("Mittwoch", "Englisch", "Musik", "Sport", "Französisch");
+            table.Rows.Add(wednesday);
+
+            var thursday = _dayFactory.CreateDay("Donnerstag", "Chemie/Physik", "Geschichte", "Ethik");
+            table.Rows.Add(thursday);
+
+            var friday = _dayFactory.CreateDay("Freitag", "Sport", "Biologie", "Mathematik");
+            table.Rows.Add(friday);
 #endif
             return table;
         }
