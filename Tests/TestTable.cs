@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using Timetable;
 
@@ -14,11 +13,7 @@ namespace Tests
         // Jannis
         private static readonly BlockStartTime _blockStart = new BlockStartTime(new[] { "08:00:00", "10:00:00", "12:00:00", "13:45:00" });
 #endif
-        private static readonly BreakStartTime _breakStart = new BreakStartTime(_blockStart, RegularBlock.DefaultDuration);
-        private static readonly BreakDuration _breakDuration = new BreakDuration(_blockStart, RegularBlock.DefaultDuration, _breakStart);
-        private static readonly BlockFactory _blockFactory = new BlockFactory(_blockStart);
-        private static readonly BreakFactory _breakFactory = new BreakFactory(_breakStart, _breakDuration);
-        private static readonly DayFactory _dayFactory = new DayFactory(_blockFactory, _breakFactory);
+        private static readonly DayFactory _dayFactory = DayFactory.Create(_blockStart);
 
         public TestTable() : base(CreateTable())
         {
@@ -31,9 +26,8 @@ namespace Tests
 
             public static DayFactory Create(BlockStartTime blockStart)
             {
-                var blockDuration = blockStart.BlockDuration;
-                var breakStart = new BreakStartTime(blockStart, blockDuration);
-                var breakDuration = new BreakDuration(blockStart, blockDuration, breakStart);
+                var breakStart = new BreakStartTime(blockStart);
+                var breakDuration = new BreakDuration(blockStart, breakStart);
                 var blockFactory = new BlockFactory(blockStart);
                 var breakFactory = new BreakFactory(breakStart, breakDuration);
 

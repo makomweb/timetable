@@ -8,10 +8,10 @@ namespace Timetable
         private readonly TimeSpan _blockDuration;
         private readonly BreakStartTime _breakStart;
 
-        public BreakDuration(BlockStartTime blockStartTime, TimeSpan blockDuration, BreakStartTime breakStart)
+        public BreakDuration(BlockStartTime blockStartTime, BreakStartTime breakStart)
         {
             _blockStartTime = blockStartTime;
-            _blockDuration = blockDuration;
+            _blockDuration = blockStartTime.BlockDuration;
             _breakStart = breakStart;
         }
 
