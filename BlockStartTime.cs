@@ -36,5 +36,18 @@ namespace Timetable
                 return nameof(RegularBlock);
             }
         }
+
+        public TimeSpan BlockDuration
+        {
+            get
+            {
+                switch (BlockType)
+                {
+                    case "RegularBlock":return RegularBlock.DefaultDuration;
+                    case "DoubleBlock": return DoubleBlock.DefaultDuration;
+                    default: throw new NotSupportedException($"Blocktype '{BlockType}' is not supported!");
+                }
+            }
+        }
     }
 }

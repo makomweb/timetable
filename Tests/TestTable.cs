@@ -31,35 +31,13 @@ namespace Tests
 
             public static DayFactory Create(BlockStartTime blockStart)
             {
-                TimeSpan blockDuration = BlockDuration(blockStart);
-
+                var blockDuration = blockStart.BlockDuration;
                 var breakStart = new BreakStartTime(blockStart, blockDuration);
-                var breakDuration = new BreakDuration(blockStart, blockDuration, _breakStart);
+                var breakDuration = new BreakDuration(blockStart, blockDuration, breakStart);
                 var blockFactory = new BlockFactory(blockStart);
                 var breakFactory = new BreakFactory(breakStart, breakDuration);
 
                 return new DayFactory(blockFactory, breakFactory);
-            }
-
-            private static TimeSpan BlockDuration(BlockStartTime blockStart)
-            {
-                TimeSpan blockDuration;
-
-                switch (blockStart.BlockType)
-                {
-                    case "RegularBlock":
-                        blockDuration = RegularBlock.DefaultDuration;
-                        break;
-
-                    case "DoubleBlock":
-                        blockDuration = DoubleBlock.DefaultDuration;
-                        break;
-
-                    default:
-                        throw new NotSupportedException($"Blocktype '{blockStart.BlockType}' is not supported!");
-                }
-
-                return blockDuration;
             }
 
             public DayFactory(BlockFactory blockFactory, BreakFactory breakFactory)
