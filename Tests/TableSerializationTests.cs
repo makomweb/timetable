@@ -31,14 +31,6 @@ namespace Tests
         }
 
         [TestMethod]
-        public void When_serializing_to_ics_it_should_succeed()
-        {
-            var table = new TestTable();
-            var ics = table.ToIcs();
-            Assert.IsFalse(string.IsNullOrEmpty(ics), "ICS string should not be null or empty!");
-        }
-
-        [TestMethod]
         public void Determining_block_duration_from_regular_block_should_succeed()
         {
             var time = new BlockStartTime(new[] { "07:45", "08:40", "09:45", "10:45", "11:50", "12:45" });
@@ -50,6 +42,32 @@ namespace Tests
         {
             var time = new BlockStartTime(new[] { "08:00:00", "10:00:00", "12:00:00", "13:45:00" });
             Assert.AreEqual("DoubleBlock", time.BlockType);
+        }
+    }
+
+    [TestClass]
+    public class ToniSchedule
+    {
+        [TestMethod]
+        public void Serialize_to_ics()
+        {
+            var blockStart = new BlockStartTime(new[] { "07:45:00", "08:40:00", "09:45:00", "10:45:00", "11:50:00", "12:45:00" });
+            var table = new TestTable(blockStart);
+            var ics = table.ToIcs();
+            Assert.IsFalse(string.IsNullOrEmpty(ics), "ICS string should not be null or empty!");
+        }
+    }
+
+    [TestClass]
+    public class JannisSchedule
+    {
+        [TestMethod]
+        public void Serialize_to_ics()
+        {
+            var blockStart = new BlockStartTime(new[] { "08:00:00", "10:00:00", "12:00:00", "13:45:00" });
+            var table = new TestTable(blockStart);
+            var ics = table.ToIcs();
+            Assert.IsFalse(string.IsNullOrEmpty(ics), "ICS string should not be null or empty!");
         }
     }
 }
