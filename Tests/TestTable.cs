@@ -61,6 +61,7 @@ namespace Tests
                 table.Columns.Add(i + "", typeof(Item));
             }
 
+            // Toni
             var monday = _dayFactory.CreateDay("Montag", "Deutsch", "Musik", "Mathe", "Kunst", "Sachkunde", "Lebenskunde");
             table.Rows.Add(monday);
 
@@ -76,6 +77,25 @@ namespace Tests
             var friday = _dayFactory.CreateDay("Freitag", "Sachkunde", "Englisch", "Sport","Mathe", "Deutsch", "Deutsch");
             table.Rows.Add(friday);
 
+#if false
+            1. Block                        2. Block                        3. Block                    4. Block
+            8:00 - 9:40, 20 min Hofpause, 10:00 - 11:30, 30 min Hofpause, 12:00 - 13:30, 15 min Pause, 13:45 - 15:15
+
+            // Jannis
+            // A-Woche:
+            Montag: Deutsch, Bio, Englisch
+            Dienstag: Mathe, Französisch, Chemie/Physik, Deutsch
+            Mittwoch: Kunst, Sport, Musik
+            Donnerstag: Deutsch, Informatik, Ethik, Klassenleiterstunde
+            Freitag: Erdkunde, Französisch, Mathe
+
+            // B-Woche: 12. März 2018
+            Montag: (frei), Deutsch, Englisch, Kunst
+            Dienstag: Französisch, Informatik, Mathe
+            Mittwoch: Englisch, Musik, Sport, Französisch
+            Donnerstag: Deutsch, Chemie/Physik, Geschichte, Ethik
+            Freitag: Sport, Biologie, Mathematik
+#endif
             return table;
         }
     }
