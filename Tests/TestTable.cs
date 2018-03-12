@@ -40,7 +40,7 @@ namespace Tests
 
                 for (var i = 0; i < subjects.Length; i++)
                 {
-                    items.Add(_blockFactory.CreateRegularBlock(i, subjects[i]));
+                    items.Add(_blockFactory.CreateDoubleBlock(i, subject));
 
                     // Check if a break has to be appended (there is no break after the last block)
                     if (i < (subjects.Length - 1))

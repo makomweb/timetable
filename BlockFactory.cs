@@ -18,7 +18,7 @@ namespace Timetable
 
         public DoubleBlock CreateDoubleBlock(int index, string subject)
         {
-            throw new NotImplementedException();
+            return new DoubleBlock(_startTime.For(index), subject);
         }
     }
 }
