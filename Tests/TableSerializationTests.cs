@@ -37,5 +37,19 @@ namespace Tests
             var ics = table.ToIcs();
             Assert.IsFalse(string.IsNullOrEmpty(ics), "ICS string should not be null or empty!");
         }
+
+        [TestMethod]
+        public void Determining_block_duration_from_regular_block_should_succeed()
+        {
+            var time = new BlockStartTime(new[] { "07:45", "08:40", "09:45", "10:45", "11:50", "12:45" });
+            Assert.AreEqual("RegularBlock", time.BlockType);
+        }
+
+        [TestMethod]
+        public void Determining_block_duration_from_double_block_should_succeed()
+        {
+            var time = new BlockStartTime(new[] { "08:00:00", "10:00:00", "12:00:00", "13:45:00" });
+            Assert.AreEqual("DoubleBlock", time.BlockType);
+        }
     }
 }

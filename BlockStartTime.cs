@@ -21,5 +21,20 @@ namespace Timetable
         {
             return _startTimes[index];
         }
+
+        public string BlockType
+        {
+            get
+            {
+                var first = _startTimes[0];
+                var second = _startTimes[1];
+                var span = second.Subtract(first);
+                if (span >= DoubleBlock.DefaultDuration)
+                {
+                    return nameof(DoubleBlock);
+                }
+                return nameof(RegularBlock);
+            }
+        }
     }
 }
