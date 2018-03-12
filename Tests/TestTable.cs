@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Ninject;
+using System.Collections.Generic;
 using System.Data;
 using Timetable;
 
@@ -26,12 +27,9 @@ namespace Tests
 
             public static DayFactory Create(BlockStartTime blockStart)
             {
-                var breakStart = new BreakStartTime(blockStart);
-                var breakDuration = new BreakDuration(blockStart, breakStart);
-                var blockFactory = new BlockFactory(blockStart);
-                var breakFactory = new BreakFactory(breakStart, breakDuration);
-
-                return new DayFactory(blockFactory, breakFactory);
+                var kernel = new StandardKernel();
+                kernel.Bind<BlockStartTime>().ToConstant(blockStart);
+                return kernel.Get<DayFactory>();
             }
 
             public DayFactory(BlockFactory blockFactory, BreakFactory breakFactory)
