@@ -76,4 +76,16 @@ namespace Tests
             Assert.IsFalse(string.IsNullOrEmpty(ics), "ICS string should not be null or empty!");
         }
     }
+
+    [TestClass]
+    public class MoritzTableTests
+    {
+        [TestMethod]
+        public void Serialize_to_ics()
+        {
+            var table = new MoritzTable();
+            var ics = table.ToIcs();
+            Assert.IsFalse(string.IsNullOrEmpty(ics), "ICS string should not be null or empty!");
+        }
+    }
 }
