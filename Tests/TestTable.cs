@@ -5,7 +5,11 @@ namespace Tests
 {
     public class TestTable : Table
     {
-        public TestTable(BlockStartTime blockStart) : base(CreateTable(DayFactory.Create(blockStart)))
+        public TestTable(BlockStartTime blockStart) : this(DayFactory.Create(blockStart))
+        {
+        }
+
+        protected TestTable(DayFactory dayFactory) : base(CreateTable(dayFactory))
         {
         }
 
