@@ -16,19 +16,19 @@ namespace Tests
             var weekdays = new List<Weekday>();
 
             var dayFactory = DayFactory.Create(BlockStartTimes);
-            var monday = dayFactory.CreateWeekday("Montag", "Deutsch", "Biologie", "Englisch");
+            var monday = dayFactory.CreateWeekday("Monday", "Deutsch", "Biologie", "Englisch");
             weekdays.Add(monday);
 
-            var tuesday = dayFactory.CreateWeekday("Dienstag", "Mathe", "Französisch", "Chemie/Physik", "Deutsch");
+            var tuesday = dayFactory.CreateWeekday("Tuesday", "Mathe", "Französisch", "Chemie/Physik", "Deutsch");
             weekdays.Add(tuesday);
 
-            var wednesday = dayFactory.CreateWeekday("Mittwoch", "Kunst", "Sport", "Musik");
+            var wednesday = dayFactory.CreateWeekday("Wednesday", "Kunst", "Sport", "Musik");
             weekdays.Add(wednesday);
 
-            var thursday = dayFactory.CreateWeekday("Donnerstag", "Deutsch", "Informatik", "Ethik", "Klassenleiterstunde");
+            var thursday = dayFactory.CreateWeekday("Thursday", "Deutsch", "Informatik", "Ethik", "Klassenleiterstunde");
             weekdays.Add(thursday);
 
-            var friday = dayFactory.CreateWeekday("Freitag", "Erdkunde", "Französisch", "Mathe");
+            var friday = dayFactory.CreateWeekday("Friday", "Erdkunde", "Französisch", "Mathe");
             weekdays.Add(friday);
 
             return weekdays;

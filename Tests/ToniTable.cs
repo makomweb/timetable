@@ -16,19 +16,19 @@ namespace Tests
             var weekdays = new List<Weekday>();
 
             var dayFactory = DayFactory.Create(BlockStartTimes);
-            var monday = dayFactory.CreateWeekday("Montag", "Deutsch", "Musik", "Mathe", "Kunst", "Sachkunde", "Lebenskunde");
+            var monday = dayFactory.CreateWeekday("Monday", "Deutsch", "Musik", "Mathe", "Kunst", "Sachkunde", "Lebenskunde");
             weekdays.Add(monday);
 
-            var tuesday = dayFactory.CreateWeekday("Dienstag", "Sport", "Sport", "Englisch", "Sachkunde", "Mathe", "Deutsch");
+            var tuesday = dayFactory.CreateWeekday("Tuesday", "Sport", "Sport", "Englisch", "Sachkunde", "Mathe", "Deutsch");
             weekdays.Add(tuesday);
 
-            var wednesday = dayFactory.CreateWeekday("Mittwoch", "Mathe", "Sachkunde", "Deutsch", "Deutsch", "Englisch");
+            var wednesday = dayFactory.CreateWeekday("Wednesday", "Mathe", "Sachkunde", "Deutsch", "Deutsch", "Englisch");
             weekdays.Add(wednesday);
 
-            var thursday = dayFactory.CreateWeekday("Donnerstag", "Deutsch", "Mathe", "Kunst", "Lebenskunde", "Sachkunde", "Musik");
+            var thursday = dayFactory.CreateWeekday("Thursday", "Deutsch", "Mathe", "Kunst", "Lebenskunde", "Sachkunde", "Musik");
             weekdays.Add(thursday);
 
-            var friday = dayFactory.CreateWeekday("Freitag", "Sachkunde", "Englisch", "Sport", "Mathe", "Deutsch", "Deutsch");
+            var friday = dayFactory.CreateWeekday("Friday", "Sachkunde", "Englisch", "Sport", "Mathe", "Deutsch", "Deutsch");
             weekdays.Add(friday);
 
             return weekdays;
