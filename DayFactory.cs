@@ -59,7 +59,7 @@ namespace Timetable
             return kernel.Get<DayFactory>();
         }
 
-        protected DayFactory(BlockFactory blockFactory, BreakFactory breakFactory)
+        public DayFactory(BlockFactory blockFactory, BreakFactory breakFactory)
         {
             _blockFactory = blockFactory;
             _breakFactory = breakFactory;
