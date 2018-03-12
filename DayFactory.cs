@@ -33,7 +33,7 @@ namespace Timetable
                     continue;
                 }
 
-                items.Add(_blockFactory.CreateDoubleBlock(i, subject));
+                items.Add(_blockFactory.CreateBlock(i, subject));
 
                 // Check if a break has to be appended (there is no break after the last block)
                 if (i < (subjects.Length - 1))

@@ -11,14 +11,14 @@ namespace Timetable
             _startTime = startTime;
         }
 
-        public RegularBlock CreateRegularBlock(int index, string subject)
+        public Block CreateBlock(int index, string subject)
         {
-            return new RegularBlock(_startTime.For(index), subject);
-        }
-
-        public DoubleBlock CreateDoubleBlock(int index, string subject)
-        {
-            return new DoubleBlock(_startTime.For(index), subject);
+            switch (_startTime.BlockType)
+            {
+                case "RegularBlock": return new RegularBlock(_startTime.For(index), subject);
+                case "DoubleBlock": return new DoubleBlock(_startTime.For(index), subject);
+                default: throw new NotSupportedException($"Unsupported block type '{_startTime.BlockType}'!");
+            }
         }
     }
 }
