@@ -1,8 +1,42 @@
 ﻿using Ninject;
+using System;
 using System.Collections.Generic;
 
 namespace Timetable
 {
+    public abstract class Weekday
+    {
+         public IEnumerable<Item> Items { get; private set; }
+
+        public static Weekday Create(string name, IEnumerable<Item> items)
+        {
+            Weekday day = null;
+            switch (name)
+            {
+                case "Monday": day = new Monday(); break;
+                case "Tuesday": day = new Tuesday(); break;
+                case "Wednesday": day = new Wednesday(); break;
+                case "Thursday": day = new Thursday(); break;
+                case "Friday": day = new Friday(); break;
+                default:
+                    throw new NotSupportedException($"Unsupported weekday '{name}'!");
+            }
+
+            day.Items = items;
+            return day;
+        }
+    }
+
+    public class Monday : Weekday { }
+
+    public class Tuesday : Weekday { }
+
+    public class Wednesday : Weekday { }
+
+    public class Thursday : Weekday { }
+
+    public class Friday : Weekday { }
+
     public class DayFactory
     {
         private readonly BlockFactory _blockFactory;
@@ -15,15 +49,15 @@ namespace Timetable
             return kernel.Get<DayFactory>();
         }
 
-        public DayFactory(BlockFactory blockFactory, BreakFactory breakFactory)
+        protected DayFactory(BlockFactory blockFactory, BreakFactory breakFactory)
         {
             _blockFactory = blockFactory;
             _breakFactory = breakFactory;
         }
 
-        public object[] CreateDay(string name, params string[] subjects)
+        public Weekday CreateWeekday(string name, params string[] subjects)
         {
-            var items = new List<object> { name };
+            var items = new List<Item>();
 
             for (var i = 0; i < subjects.Length; i++)
             {
@@ -42,7 +76,7 @@ namespace Timetable
                 }
             }
 
-            return items.ToArray();
+            return Weekday.Create(name, items);
         }
     }
 }

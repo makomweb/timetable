@@ -64,19 +64,19 @@ namespace Tests
 #endif
 
             // B-Woche: 12. März 2018
-            var monday = dayFactory.CreateDay("Montag", null, "Deutsch", "Englisch", "Kunst");
+            var monday = dayFactory.CreateWeekday("Montag", null, "Deutsch", "Englisch", "Kunst");
             table.Rows.Add(monday);
 
-            var tuesday = dayFactory.CreateDay("Dienstag", "Französisch", "Informatik", "Mathe");
+            var tuesday = dayFactory.CreateWeekday("Dienstag", "Französisch", "Informatik", "Mathe");
             table.Rows.Add(tuesday);
 
-            var wednesday = dayFactory.CreateDay("Mittwoch", "Englisch", "Musik", "Sport", "Französisch");
+            var wednesday = dayFactory.CreateWeekday("Mittwoch", "Englisch", "Musik", "Sport", "Französisch");
             table.Rows.Add(wednesday);
 
-            var thursday = dayFactory.CreateDay("Donnerstag", "Chemie/Physik", "Geschichte", "Ethik");
+            var thursday = dayFactory.CreateWeekday("Donnerstag", "Chemie/Physik", "Geschichte", "Ethik");
             table.Rows.Add(thursday);
 
-            var friday = dayFactory.CreateDay("Freitag", "Sport", "Biologie", "Mathematik");
+            var friday = dayFactory.CreateWeekday("Freitag", "Sport", "Biologie", "Mathematik");
             table.Rows.Add(friday);
 #endif
             return table;
