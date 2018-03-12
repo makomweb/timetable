@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using Timetable;
 
@@ -27,6 +28,39 @@ namespace Tests
         {
             private readonly BlockFactory _blockFactory;
             private readonly BreakFactory _breakFactory;
+
+            public static DayFactory Create(BlockStartTime blockStart)
+            {
+                TimeSpan blockDuration = BlockDuration(blockStart);
+
+                var breakStart = new BreakStartTime(blockStart, blockDuration);
+                var breakDuration = new BreakDuration(blockStart, blockDuration, _breakStart);
+                var blockFactory = new BlockFactory(blockStart);
+                var breakFactory = new BreakFactory(breakStart, breakDuration);
+
+                return new DayFactory(blockFactory, breakFactory);
+            }
+
+            private static TimeSpan BlockDuration(BlockStartTime blockStart)
+            {
+                TimeSpan blockDuration;
+
+                switch (blockStart.BlockType)
+                {
+                    case "RegularBlock":
+                        blockDuration = RegularBlock.DefaultDuration;
+                        break;
+
+                    case "DoubleBlock":
+                        blockDuration = DoubleBlock.DefaultDuration;
+                        break;
+
+                    default:
+                        throw new NotSupportedException($"Blocktype '{blockStart.BlockType}' is not supported!");
+                }
+
+                return blockDuration;
+            }
 
             public DayFactory(BlockFactory blockFactory, BreakFactory breakFactory)
             {
