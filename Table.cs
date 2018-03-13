@@ -20,7 +20,7 @@ namespace Timetable
             return JsonConvert.SerializeObject(_days);
         }
 
-        public Weekday At(DayOfWeek dayOfWeek)
+        public Weekday GetWeekday(DayOfWeek dayOfWeek)
         {
             return _days.FirstOrDefault(d => d.IsSame(dayOfWeek));
         }
@@ -51,13 +51,13 @@ namespace Timetable
             // loop over the days of the week.
             foreach (DayOfWeek d in Enum.GetValues(typeof(DayOfWeek)))
             {
-                var weekDay = At(d);
-                if (weekDay == null)
+                var weekday = GetWeekday(d);
+                if (weekday == null)
                 {
                     continue;
                 }
 
-                var e = CreateEvents(startOfWeek, weekDay);
+                var e = weekday.ToIcs(startOfWeek);
                 sb.AppendLine(e);
             }
 
@@ -66,12 +66,6 @@ namespace Timetable
 
             //create a string from the stringbuilder
             return sb.ToString();
-        }
-
-        private static string CreateEvents(DateTime startOfWeek, Weekday weekday)
-        {
-            var date = weekday.Date(startOfWeek);
-            return weekday.ToIcs(date);
         }
 
         private static DateTime WeekStart => StartOfWeek(DateTime.Now, DayOfWeek.Monday);

@@ -40,42 +40,28 @@ namespace Timetable
             return Name == dayOfWeek.ToString();
         }
 
-        public string ToIcs(DateTime day)
+        public string ToIcs(DateTime startOfWeek)
         {
+            var weekday = startOfWeek;
+            switch (Name)
+            {
+                case "Monday": break;
+                case "Tuesday": weekday = startOfWeek.AddDays(1); break;
+                case "Wednesday": weekday = startOfWeek.AddDays(2); break;
+                case "Thursday": weekday = startOfWeek.AddDays(3); break;
+                case "Friday": weekday = startOfWeek.AddDays(4); break;
+                default:
+                    throw new NotSupportedException($"Unsupported day name '{Name}'!");
+            }
+
             var sb = new StringBuilder();
             foreach (var block in Items.OfType<Block>())
             {
-                var ics = block.ToIcs(day);
+                var ics = block.ToIcs(weekday);
                 sb.AppendLine(ics);
             }
 
             return sb.ToString();
-        }
-
-        public DateTime Date(DateTime startOfWeek)
-        {
-            var day = startOfWeek;
-            switch (Name)
-            {
-                case "Monday":
-                    break;
-                case "Tuesday":
-                    day = startOfWeek.AddDays(1);
-                    break;
-                case "Wednesday":
-                    day = startOfWeek.AddDays(2);
-                    break;
-                case "Thursday":
-                    day = startOfWeek.AddDays(3);
-                    break;
-                case "Friday":
-                    day = startOfWeek.AddDays(4);
-                    break;
-                default:
-                    throw new NotSupportedException($"Unknown day type '{Name}'!");
-            }
-
-            return day;
         }
     }
 
