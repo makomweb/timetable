@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using Timetable;
 
-namespace Tests
+namespace Timetable
 {
     public class JannisTableB : Table
     {

@@ -56,10 +56,14 @@
     <Compile Include="DayFactory.cs" />
     <Compile Include="DoubleBlock.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="JannisTableA.cs" />
+    <Compile Include="JannisTableB.cs" />
+    <Compile Include="MoritzTable.cs" />
     <Compile Include="RegularBlock.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToniTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

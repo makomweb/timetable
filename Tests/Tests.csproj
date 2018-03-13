@@ -50,12 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileTests.cs" />
-    <Compile Include="JannisTableA.cs" />
-    <Compile Include="JannisTableB.cs" />
-    <Compile Include="MoritzTable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TableSerializationTests.cs" />
-    <Compile Include="ToniTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
