@@ -52,40 +52,4 @@ namespace Tests
             Assert.AreEqual("Monday", d);
         }
     }
-
-    [TestClass]
-    public class ToniTableTests
-    {
-        [TestMethod]
-        public void Serialize_to_ics()
-        {
-            var table = new ToniTable();
-            var ics = table.ToIcs();
-            Assert.IsFalse(string.IsNullOrEmpty(ics), "ICS string should not be null or empty!");
-        }
-    }
-
-    [TestClass]
-    public class JannisTableTests
-    {
-        [TestMethod]
-        public void Serialize_to_ics()
-        {
-            var table = new JannisTableB();
-            var ics = table.ToIcs();
-            Assert.IsFalse(string.IsNullOrEmpty(ics), "ICS string should not be null or empty!");
-        }
-    }
-
-    [TestClass]
-    public class MoritzTableTests
-    {
-        [TestMethod]
-        public void Serialize_to_ics()
-        {
-            var table = new MoritzTable();
-            var ics = table.ToIcs();
-            Assert.IsFalse(string.IsNullOrEmpty(ics), "ICS string should not be null or empty!");
-        }
-    }
 }
