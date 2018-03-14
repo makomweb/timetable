@@ -1,6 +1,7 @@
 ﻿using Ical.Net;
 using Ical.Net.CalendarComponents;
 using Ical.Net.DataTypes;
+using Ical.Net.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace Timetable
 
         public string ToIcs()
         {
+#if false
             //create a new stringbuilder instance
             StringBuilder sb = new StringBuilder();
 
@@ -63,6 +65,10 @@ namespace Timetable
 
             //create a string from the stringbuilder
             return sb.ToString();
+#else
+            var serializer = new CalendarSerializer();
+            return serializer.SerializeToString(GetCalendar());
+#endif
         }
 
         private Calendar GetCalendar()
