@@ -8,6 +8,8 @@ namespace Timetable
 {
     public abstract class Weekday
     {
+        public string Name => GetType().Name.ToString();
+
         public IEnumerable<Item> Items { get; private set; }
 
         public static Weekday Create(DayOfWeek dayOfWeek, IEnumerable<Item> items)
@@ -32,8 +34,6 @@ namespace Timetable
             day.Items = items;
             return day;
         }
-
-        private string Name => GetType().Name.ToString();
 
         public bool IsSame(DayOfWeek dayOfWeek)
         {
