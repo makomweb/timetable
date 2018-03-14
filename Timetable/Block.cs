@@ -19,12 +19,7 @@ namespace Timetable
 
         private static string CreateEvent(DateTime day, Block block)
         {
-#if false
-            var begin = Convert.ToDateTime(block.Begin.ToString());
-#else
-            var begin = new DateTime(day.Year, day.Month, day.Day, block.Begin.Hours, block.Begin.Minutes, block.Begin.Seconds, day.Kind);
-#endif
-
+            var begin = block.GetStartTime(day);
             var end = begin.Add(block.Duration);
             return CreateEvent(begin, end, block.Subject.Name);
         }

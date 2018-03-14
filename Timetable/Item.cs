@@ -15,5 +15,10 @@ namespace Timetable
         }
 
         public abstract string Type { get; }
+
+        public DateTime GetStartTime(DateTime date)
+        {
+            return new DateTime(date.Year, date.Month, date.Day, Begin.Hours, Begin.Minutes, Begin.Seconds, date.Kind);
+        }
     }
 }

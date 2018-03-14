@@ -40,6 +40,24 @@ namespace Timetable
             return Name == dayOfWeek.ToString();
         }
 
+        public DateTime GetDate(DateTime startOfWeek)
+        {
+            var date = startOfWeek;
+
+            switch (Name)
+            {
+                case "Monday": break;
+                case "Tuesday": date = startOfWeek.AddDays(1); break;
+                case "Wednesday": date = startOfWeek.AddDays(2); break;
+                case "Thursday": date = startOfWeek.AddDays(3); break;
+                case "Friday": date = startOfWeek.AddDays(4); break;
+                default:
+                    throw new NotSupportedException($"Unsupported day name '{Name}'!");
+            }
+
+            return date;
+        }
+
         public string ToIcs(DateTime startOfWeek)
         {
             var weekday = startOfWeek;
