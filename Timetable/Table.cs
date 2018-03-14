@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Ical.Net;
+using Ical.Net.CalendarComponents;
+using Ical.Net.DataTypes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -60,7 +63,41 @@ namespace Timetable
 
             //create a string from the stringbuilder
             return sb.ToString();
+        }
 
+        private Calendar GetCalendar()
+        {
+            var calendar = new Calendar();
+
+            var weekStart = Week.Start;
+            foreach (var d in Days)
+            {
+                var e = CreateEvents(d, weekStart);
+                calendar.Events.AddRange(e);
+            }
+
+            return calendar;
+        }
+
+        private static IEnumerable<CalendarEvent> CreateEvents(Weekday weekDay, DateTime startOfWeek)
+        {
+            var result = new List<CalendarEvent>();
+
+            var date = weekDay.GetDate(startOfWeek);
+            foreach (var block in weekDay.Items.OfType<Block>())
+            {
+                var begin = block.GetStartTime(date);
+                var end = begin.Add(block.Duration);
+                var ev = new CalendarEvent
+                {
+                    Start = new CalDateTime(begin),
+                    End = new CalDateTime(end),
+                    Summary = block.Subject.Name
+                };
+                result.Add(ev);
+            }
+
+            return result;
         }
     }
 }
