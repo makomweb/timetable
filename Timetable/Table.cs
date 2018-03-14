@@ -40,7 +40,7 @@ namespace Timetable
             sb.AppendLine("END:STANDARD");
             sb.AppendLine("END:VTIMEZONE");
 
-            var startOfWeek = WeekStart;
+            var startOfWeek = Week.Start;
 
             // loop over the days of the week.
             foreach (DayOfWeek d in Enum.GetValues(typeof(DayOfWeek)))
@@ -60,14 +60,7 @@ namespace Timetable
 
             //create a string from the stringbuilder
             return sb.ToString();
-        }
 
-        private static DateTime WeekStart => StartOfWeek(DateTime.Now, DayOfWeek.Monday);
-
-        public static DateTime StartOfWeek(DateTime now, DayOfWeek startOfWeek)
-        {
-            int diff = (7 + (now.DayOfWeek - startOfWeek)) % 7;
-            return now.AddDays(-1 * diff).Date;
         }
     }
 }
