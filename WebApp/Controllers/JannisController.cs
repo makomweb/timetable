@@ -7,7 +7,7 @@ namespace WebApp.Controllers
 {
     public class JannisController : ApiController
     {
-        private JannisTableA _table = new JannisTableA();
+        private Table _table = new JannisTableB();
 
         public HttpResponseMessage Get()
         {
