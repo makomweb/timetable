@@ -29,13 +29,5 @@ namespace Tests
             var ics = table.ToIcs();
             Assert.IsFalse(string.IsNullOrEmpty(ics), "ICS string should not be null or empty!");
         }
-
-        [TestMethod]
-        public void Serialize_Toni_table_to_json()
-        {
-            var table = new ToniTable();
-            var json = table.ToJson();
-            Assert.IsFalse(string.IsNullOrEmpty(json), "JSON string should not be null or empty!");
-        }
     }
 }

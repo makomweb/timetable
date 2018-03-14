@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,11 +12,6 @@ namespace Timetable
         public Table(IEnumerable<Weekday> days)
         {
             Days = days;
-        }
-
-        public string ToJson()
-        {
-            return JsonConvert.SerializeObject(Days);
         }
 
         public Weekday GetWeekday(DayOfWeek dayOfWeek)
