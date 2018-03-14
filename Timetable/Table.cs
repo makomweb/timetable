@@ -8,21 +8,21 @@ namespace Timetable
 {
     public class Table
     {
-        private IEnumerable<Weekday> _days;
+        public IEnumerable<Weekday> Days { get; private set; }
 
         public Table(IEnumerable<Weekday> days)
         {
-            _days = days;
+            Days = days;
         }
 
         public string ToJson()
         {
-            return JsonConvert.SerializeObject(_days);
+            return JsonConvert.SerializeObject(Days);
         }
 
         public Weekday GetWeekday(DayOfWeek dayOfWeek)
         {
-            return _days.FirstOrDefault(d => d.IsSame(dayOfWeek));
+            return Days.FirstOrDefault(d => d.IsSame(dayOfWeek));
         }
 
         public string ToIcs()
