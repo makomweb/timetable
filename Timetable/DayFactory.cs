@@ -57,30 +57,6 @@ namespace Timetable
 
             return date;
         }
-
-        public string ToIcs(DateTime startOfWeek)
-        {
-            var weekday = startOfWeek;
-            switch (Name)
-            {
-                case "Monday": break;
-                case "Tuesday": weekday = startOfWeek.AddDays(1); break;
-                case "Wednesday": weekday = startOfWeek.AddDays(2); break;
-                case "Thursday": weekday = startOfWeek.AddDays(3); break;
-                case "Friday": weekday = startOfWeek.AddDays(4); break;
-                default:
-                    throw new NotSupportedException($"Unsupported day name '{Name}'!");
-            }
-
-            var sb = new StringBuilder();
-            foreach (var block in Items.OfType<Block>())
-            {
-                var ics = block.ToIcs(weekday);
-                sb.AppendLine(ics);
-            }
-
-            return sb.ToString();
-        }
     }
 
     public class Monday : Weekday { }
