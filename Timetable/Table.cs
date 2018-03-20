@@ -92,8 +92,8 @@ namespace Timetable
             var date = weekDay.GetDate(startOfWeek);
             foreach (var block in weekDay.Items.OfType<Block>())
             {
-                var begin = block.GetStartTime(date);
-                var end = begin.Add(block.Duration);
+                var begin = block.GetStartTime(date).ToUniversalTime();
+                var end = begin.Add(block.Duration).ToUniversalTime();
                 var ev = new CalendarEvent
                 {
                     Start = new CalDateTime(begin),
