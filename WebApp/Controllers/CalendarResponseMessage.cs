@@ -6,11 +6,11 @@ namespace WebApp.Controllers
 {
     public static class CalendarResponseMessage
     {
-        public static HttpResponseMessage From(Table table)
+        public static HttpResponseMessage From(params Table[] tables)
         {
             return new HttpResponseMessage(HttpStatusCode.OK)
             {
-                Content = CalendarContent.From(table)
+                Content = CalendarContent.From(tables)
             };
         }
     }

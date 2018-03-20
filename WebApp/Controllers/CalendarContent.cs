@@ -8,9 +8,9 @@ namespace WebApp.Controllers
     {
         public const string MediaType = "text/ical";
 
-        public static CalendarContent From(Table table)
+        public static CalendarContent From(params Table[] tables)
         {
-            var ics = Ics.From(table);
+            var ics = Ics.From(tables);
             return new CalendarContent(ics);
         }
 
