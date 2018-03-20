@@ -13,7 +13,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                return JsonResponseMessage.From(_table);
+                return CalendarResponseMessage.From(_table);
             }
             catch (Exception ex)
             {
