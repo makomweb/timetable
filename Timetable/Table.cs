@@ -4,7 +4,6 @@ using Ical.Net.DataTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Timetable
 {
@@ -25,16 +24,16 @@ namespace Timetable
         public void Externalize(Calendar calendar)
         {
             var weekStart = Week.Start;
-            foreach (var d in Days)
+            foreach (var day in Days)
             {
-                var e = CreateEvents(d, weekStart);
-                calendar.Events.AddRange(e);
+                var events = CreateEvents(day, weekStart);
+                calendar.Events.AddRange(events);
             }
         }
 
         private static IEnumerable<CalendarEvent> CreateEvents(Weekday weekDay, DateTime startOfWeek)
         {
-            var result = new List<CalendarEvent>();
+            var events = new List<CalendarEvent>();
 
             var date = weekDay.GetDate(startOfWeek);
             foreach (var block in weekDay.Items.OfType<Block>())
@@ -47,10 +46,10 @@ namespace Timetable
                     End = new CalDateTime(end),
                     Summary = block.Subject.Name
                 };
-                result.Add(ev);
+                events.Add(ev);
             }
 
-            return result;
+            return events;
         }
     }
 }
