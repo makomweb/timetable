@@ -18,7 +18,7 @@ namespace Timetable
 
         public DateTime GetStartTime(DateTime date)
         {
-            return new DateTime(date.Year, date.Month, date.Day, Begin.Hours, Begin.Minutes, Begin.Seconds, date.Kind);
+            return new DateTime(date.Year, date.Month, date.Day, Begin.Hours, Begin.Minutes, Begin.Seconds, DateTimeKind.Local);
         }
     }
 }
