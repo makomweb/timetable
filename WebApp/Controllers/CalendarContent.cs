@@ -10,7 +10,7 @@ namespace WebApp.Controllers
 
         public static CalendarContent From(Table table)
         {
-            var ics = table.ToIcs();
+            var ics = Ics.From(table);
             return new CalendarContent(ics);
         }
 

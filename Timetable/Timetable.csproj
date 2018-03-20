@@ -72,6 +72,7 @@
     <Compile Include="DayFactory.cs" />
     <Compile Include="DoubleBlock.cs" />
     <Compile Include="Ensure.cs" />
+    <Compile Include="Ics.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="JannisTableA.cs" />
     <Compile Include="JannisTableB.cs" />
