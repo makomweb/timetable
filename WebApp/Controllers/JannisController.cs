@@ -7,6 +7,44 @@ namespace WebApp.Controllers
 {
     public class JannisController : ApiController
     {
+#if false
+        private Table _table = new JannisTableA();
+#else
+        private Table _table = new JannisTableB();
+#endif
+
+        public HttpResponseMessage Get()
+        {
+            try
+            {
+                return CalendarResponseMessage.From(_table);
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseMessage.From(ex);
+            }
+        }
+    }
+
+    public class JannisAController : ApiController
+    {
+        private Table _table = new JannisTableA();
+
+        public HttpResponseMessage Get()
+        {
+            try
+            {
+                return CalendarResponseMessage.From(_table);
+            }
+            catch (Exception ex)
+            {
+                return JsonResponseMessage.From(ex);
+            }
+        }
+    }
+
+    public class JannisBController : ApiController
+    {
         private Table _table = new JannisTableB();
 
         public HttpResponseMessage Get()
