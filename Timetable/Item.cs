@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ical.Net.DataTypes;
+using System;
 
 namespace Timetable
 {
@@ -16,9 +17,9 @@ namespace Timetable
 
         public abstract string Type { get; }
 
-        public DateTime GetStartTime(DateTime date)
+        public CalDateTime GetStartTime(DateTime date, string timezoneId)
         {
-            return new DateTime(date.Year, date.Month, date.Day, Begin.Hours, Begin.Minutes, Begin.Seconds, DateTimeKind.Local);
+            return new CalDateTime(date.Year, date.Month, date.Day, Begin.Hours, Begin.Minutes, Begin.Seconds, timezoneId);
         }
     }
 }
