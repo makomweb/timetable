@@ -200,6 +200,7 @@
     <Compile Include="Controllers\JannisController.cs" />
     <Compile Include="Controllers\JsonContent.cs" />
     <Compile Include="Controllers\JsonResponseMessage.cs" />
+    <Compile Include="Controllers\KidsController.cs" />
     <Compile Include="Controllers\MoritzController.cs" />
     <Compile Include="Controllers\ToniController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
