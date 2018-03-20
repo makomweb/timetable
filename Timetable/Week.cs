@@ -4,7 +4,7 @@ namespace Timetable
 {
     public static class Week
     { 
-        public static DateTime Start => GetStart(DateTime.Now, DayOfWeek.Monday);
+        public static DateTime Start => GetStart(DateTime.UtcNow, DayOfWeek.Monday);
 
         public static DateTime GetStart(DateTime now, DayOfWeek startOfWeek)
         {
