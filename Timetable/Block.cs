@@ -15,13 +15,13 @@ namespace Timetable
 
         public CalendarEvent ToCalendarEvent(DateTime date, string timezoneId)
         {
-            var begin = GetStartTime(date, timezoneId).AsUtc;
+            var begin = GetStartTime(date, timezoneId);
             var end = begin.Add(Duration);
 
             return new CalendarEvent
             {
-                Start = new CalDateTime(begin),
-                End = new CalDateTime(end),
+                Start = begin,
+                End = end,
                 Summary = Subject.Name
             };
         }
