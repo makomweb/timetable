@@ -195,6 +195,8 @@
     <Compile Include="Controllers\CalendarContent.cs" />
     <Compile Include="Controllers\CalendarResponseMessage.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JannisAController.cs" />
+    <Compile Include="Controllers\JannisBController.cs" />
     <Compile Include="Controllers\JannisController.cs" />
     <Compile Include="Controllers\JsonContent.cs" />
     <Compile Include="Controllers\JsonResponseMessage.cs" />
