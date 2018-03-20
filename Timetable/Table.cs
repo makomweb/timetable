@@ -38,8 +38,8 @@ namespace Timetable
             var date = weekDay.GetDate(startOfWeek);
             foreach (var block in weekDay.Items.OfType<Block>())
             {
-                var begin = block.GetStartTime(date).ToUniversalTime();
-                var end = begin.Add(block.Duration).ToUniversalTime();
+                var begin = block.GetStartTime(date, "Europe/Germany").AsUtc;
+                var end = begin.Add(block.Duration);
                 var ev = new CalendarEvent
                 {
                     Start = new CalDateTime(begin),
