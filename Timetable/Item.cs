@@ -1,5 +1,4 @@
-﻿using Ical.Net.CalendarComponents;
-using Ical.Net.DataTypes;
+﻿using Ical.Net.DataTypes;
 using System;
 
 namespace Timetable
