@@ -1,4 +1,5 @@
-﻿using Ical.Net.DataTypes;
+﻿using Ical.Net.CalendarComponents;
+using Ical.Net.DataTypes;
 using System;
 
 namespace Timetable
@@ -19,7 +20,8 @@ namespace Timetable
 
         public CalDateTime GetStartTime(DateTime date, string timezoneId)
         {
-            return new CalDateTime(date.Year, date.Month, date.Day, Begin.Hours, Begin.Minutes, Begin.Seconds, timezoneId);
+            var cdt = new CalDateTime(date.Year, date.Month, date.Day, Begin.Hours, Begin.Minutes, Begin.Seconds, timezoneId);
+            return new CalDateTime(cdt.AsUtc);
         }
     }
 }
