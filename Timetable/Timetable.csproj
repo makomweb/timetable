@@ -83,6 +83,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToniTable.cs" />
     <Compile Include="Week.cs" />
+    <Compile Include="Weekday.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
