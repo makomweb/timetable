@@ -4,13 +4,20 @@ using Timetable;
 
 namespace WebApp.Controllers
 {
-    public static class CalendarResponseMessage
+    public class CalendarResponseMessage
     {
-        public static HttpResponseMessage From(params Table[] tables)
+        private readonly string _timezoneId;
+
+        public CalendarResponseMessage(string timezoneId)
+        {
+            _timezoneId = timezoneId;
+        }
+
+        public HttpResponseMessage From(params Table[] tables)
         {
             return new HttpResponseMessage(HttpStatusCode.OK)
             {
-                Content = CalendarContent.From(tables)
+                Content = CalendarContent.From(_timezoneId, tables)
             };
         }
     }

@@ -8,10 +8,10 @@ namespace WebApp.Controllers
     {
         public const string MediaType = "text/ical";
 
-        public static CalendarContent From(params Table[] tables)
+        public static CalendarContent From(string timezoneId, params Table[] tables)
         {
-            var ics = Ics.From(tables);
-            return new CalendarContent(ics);
+            var ics = new Ics(timezoneId);
+            return new CalendarContent(ics.From(tables));
         }
 
         protected CalendarContent(string raw) : base(raw, Encoding.UTF8, MediaType)

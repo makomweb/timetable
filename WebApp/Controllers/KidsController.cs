@@ -19,7 +19,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                return CalendarResponseMessage.From(_jannis, _toni, _moritz);
+                return new CalendarResponseMessage("Europe/Berlin").From(_jannis, _toni, _moritz);
             }
             catch (Exception ex)
             {

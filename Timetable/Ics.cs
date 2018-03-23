@@ -3,16 +3,22 @@ using Ical.Net.Serialization;
 
 namespace Timetable
 {
-    public static class Ics
+    public class Ics
     {
-        public static string From(params Table[] tables)
+        private string _timezoneId;
+
+        public Ics(string timezoneId)
         {
-            string timezoneId = "Europe/Berlin";
+            _timezoneId = timezoneId;
+        }
+
+        public string From(params Table[] tables)
+        {
             var calendar = new Calendar();
 
             foreach (var t in tables)
             {
-                t.Externalize(calendar, timezoneId);
+                t.Externalize(calendar, _timezoneId);
             }
 
             var serializer = new CalendarSerializer();

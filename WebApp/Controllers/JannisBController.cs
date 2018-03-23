@@ -13,7 +13,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                return CalendarResponseMessage.From(_table);
+                return new CalendarResponseMessage("Europe/Berlin").From(_table);
             }
             catch (Exception ex)
             {
