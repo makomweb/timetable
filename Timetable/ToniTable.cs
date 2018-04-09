@@ -8,7 +8,10 @@ namespace Timetable
         {
         }
 
-        private static BlockStartTime BlockStartTimes = new BlockStartTime(new[] { "07:45", "08:40", "09:45", "10:45", "11:50", "12:45" });
+        private static BlockStartTime BlockStartTimes = new BlockStartTime(new[]
+        {
+            "07:45", "08:40", "09:45", "10:45", "11:50", "12:45"
+        });
 
         private static IEnumerable<Weekday> CreateWeekdays()
         {

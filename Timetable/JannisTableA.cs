@@ -2,13 +2,11 @@
 
 namespace Timetable
 {
-    public class JannisTableA : Table
+    public class JannisTableA : JannisTable
     {
         public JannisTableA() : base(CreateWeekdays())
         {
         }
-
-        private static BlockStartTime BlockStartTimes = new BlockStartTime(new[] { "08:00:00", "10:00:00", "12:00:00", "13:45:00" });
 
         private static IEnumerable<Weekday> CreateWeekdays()
         {

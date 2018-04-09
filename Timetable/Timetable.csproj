@@ -74,6 +74,7 @@
     <Compile Include="Ensure.cs" />
     <Compile Include="Ics.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="JannisTable.cs" />
     <Compile Include="JannisTableA.cs" />
     <Compile Include="JannisTableB.cs" />
     <Compile Include="MoritzTable.cs" />
