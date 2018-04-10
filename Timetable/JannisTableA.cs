@@ -16,16 +16,16 @@ namespace Timetable
             var monday = dayFactory.CreateWeekday("Monday", "Deutsch", "Biologie", "Englisch");
             weekdays.Add(monday);
 
-            var tuesday = dayFactory.CreateWeekday("Tuesday", "Mathe", "Französisch", "Chemie/Physik", "Deutsch");
+            var tuesday = dayFactory.CreateWeekday("Tuesday", "Mathe", "Französisch", "Chemie/Physik");
             weekdays.Add(tuesday);
 
-            var wednesday = dayFactory.CreateWeekday("Wednesday", "Kunst", "Sport", "Musik");
+            var wednesday = dayFactory.CreateWeekday("Wednesday", "Geschichte", "Musik", "Sport", "Kunst");
             weekdays.Add(wednesday);
 
             var thursday = dayFactory.CreateWeekday("Thursday", "Deutsch", "Informatik", "Ethik", "Klassenleiterstunde");
             weekdays.Add(thursday);
 
-            var friday = dayFactory.CreateWeekday("Friday", "Erdkunde", "Französisch", "Mathe");
+            var friday = dayFactory.CreateWeekday("Friday", "Erdkunde", "Französisch", "Mathe", "Begabten");
             weekdays.Add(friday);
 
             return weekdays;
