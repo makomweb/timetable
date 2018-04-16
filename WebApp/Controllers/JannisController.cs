@@ -7,7 +7,7 @@ namespace WebApp.Controllers
 {
     public class JannisController : ApiController
     {
-#if false
+#if true
         private Table _table = new JannisTableA();
 #else
         private Table _table = new JannisTableB();
