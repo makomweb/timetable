@@ -15,11 +15,6 @@ namespace Timetable
             Days = days;
         }
 
-        public Weekday GetWeekday(DayOfWeek dayOfWeek)
-        {
-            return Days.FirstOrDefault(d => d.IsSame(dayOfWeek));
-        }
-
         public void Externalize(Calendar calendar, string timezoneId)
         {
             var weekStart = Week.Start;
