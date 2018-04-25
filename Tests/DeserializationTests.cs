@@ -32,34 +32,37 @@ namespace Tests
             Assert.IsFalse(string.IsNullOrEmpty(block.Name), "Block should contain subject name!");
         }
 
-        private TestTable Deserialize(string fileName)
+        private Deserialized.Table Deserialize(string fileName)
         {
             var path = Path.Combine("Data", fileName);
             var json = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<TestTable>(json);
+            return JsonConvert.DeserializeObject<Deserialized.Table>(json);
         }
+    }
 
-        private class TestBlock
+    namespace Deserialized
+    {
+        public class Block
         {
             public string Name { get; set; }
-            
+
             public string Begin { get; set; }
         }
 
-        private class TestWeekday
+        public class Weekday
         {
             public string Name { get; set; }
 
-            public TestBlock[] Blocks { get; set; }
+            public Block[] Blocks { get; set; }
         }
 
-        private class TestTable
+        public class Table
         {
             public string[] BlockStartTimes { get; set; }
 
             public BlockStartTime StartTimes => new BlockStartTime(BlockStartTimes);
 
-            public TestWeekday[] Weekdays { get; set; }
+            public Weekday[] Weekdays { get; set; }
         }
     }
 }

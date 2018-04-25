@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Timetable
 {
-    public abstract class Table
+    public class Table
     {
         public IEnumerable<Weekday> Days { get; protected set; }
 
