@@ -40,35 +40,24 @@ namespace Tests
         }
     }
 
-    public class Conversion
+    public class TableConvert
     {
-        private readonly Deserialized.Table _table;
-
-        public Conversion(Deserialized.Table table)
+        public Table FromDeserialized(Deserialized.Table table)
         {
-            _table = table;
+            var blockType = table.StartTimes.BlockType;
+            var weekdays = table.Weekdays.Select(w => FromDeserialized(w, blockType));
+            return new Table(weekdays);
         }
 
-        private string BlockType => _table.StartTimes.BlockType;
-
-        public Table TimeTable
+        private Weekday FromDeserialized(Deserialized.Weekday day, string blockType)
         {
-            get
-            {
-                var weekdays = _table.Weekdays.Select(w => FromDeserialized(w));
-                return new Table(weekdays);
-            }
+            return Weekday.Create(day.Name, day.Blocks.Select(b => FromDeserialized(b, blockType)));
         }
 
-        private Weekday FromDeserialized(Deserialized.Weekday day)
-        {
-            return Weekday.Create(day.Name, day.Blocks.Select(b => FromDeserialized(b)));
-        }
-
-        private Block FromDeserialized(Deserialized.Block b)
+        private Block FromDeserialized(Deserialized.Block b, string blockType)
         {
             var begin = BlockStartTime.FromString(b.Begin);
-            return Block.Create(begin, b.Name, BlockType);
+            return Block.Create(begin, b.Name, blockType);
         }
     }
 
