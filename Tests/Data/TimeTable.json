@@ -1,0 +1,90 @@
+﻿{
+  "BlockstartTimes": [ "07:55", "08:40", "09:45", "10:45", "11:50", "12:45" ],
+  "Weekdays": [
+    {
+      "Name": "Monday",
+      "Blocks": [
+        {
+          "Name": "German",
+          "Begin": "07:55"
+        },
+        {
+          "Name": "English",
+          "Begin": "08:40"
+        },
+        {
+          "Name": "Athletics",
+          "Begin": "09:45"
+        }
+      ]
+    },
+    {
+      "Name": "Tuesday",
+      "Blocks": [
+        {
+          "Name": "German",
+          "Begin": "07:55"
+        },
+        {
+          "Name": "English",
+          "Begin": "08:40"
+        },
+        {
+          "Name": "Athletics",
+          "Begin": "09:45"
+        }
+      ]
+    },
+    {
+      "Name": "Wednesday",
+      "Blocks": [
+        {
+          "Name": "German",
+          "Begin": "07:55"
+        },
+        {
+          "Name": "English",
+          "Begin": "08:40"
+        },
+        {
+          "Name": "Athletics",
+          "Begin": "09:45"
+        }
+      ]
+    },
+    {
+      "Name": "Thursday",
+      "Blocks": [
+        {
+          "Name": "German",
+          "Begin": "07:55"
+        },
+        {
+          "Name": "English",
+          "Begin": "08:40"
+        },
+        {
+          "Name": "Athletics",
+          "Begin": "09:45"
+        }
+      ]
+    },
+    {
+      "Name": "Friday",
+      "Blocks": [
+        {
+          "Name": "German",
+          "Begin": "07:55"
+        },
+        {
+          "Name": "English",
+          "Begin": "08:40"
+        },
+        {
+          "Name": "Athletics",
+          "Begin": "09:45"
+        }
+      ]
+    }
+  ]
+}
