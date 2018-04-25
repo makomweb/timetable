@@ -54,7 +54,6 @@ namespace Timetable
             {
                 var calendar = _info.Calendar;
                 return calendar.GetWeekOfYear(date, _info.CalendarWeekRule, _info.FirstDayOfWeek);
-
             }
         }
     }
