@@ -11,9 +11,22 @@ namespace Timetable
         {
             foreach (var t in startTimes)
             {
-                var ts = new TimeSpan(int.Parse(t.Split(':')[0]), int.Parse(t.Split(':')[1]), 0);
+                var ts = FromString(t);
 
                 _startTimes.Add(ts);
+            }
+        }
+
+        public static TimeSpan FromString(string time)
+        {
+            var parts = time.Split(':');
+
+            switch (parts.Length)
+            {
+                case 2: return new TimeSpan(int.Parse(parts[0]), int.Parse(parts[1]), 0);
+                case 3: return new TimeSpan(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2]));
+                default:
+                    throw new NotSupportedException($"Input string {time} does not contain 2 or 3 time parts (hour, minute and optional seconds)!");
             }
         }
 
