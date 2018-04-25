@@ -8,7 +8,7 @@ namespace Timetable
 {
     public abstract class Table
     {
-        public IEnumerable<Weekday> Days { get; private set; }
+        public IEnumerable<Weekday> Days { get; protected set; }
 
         public Table(IEnumerable<Weekday> days)
         {

@@ -23,10 +23,22 @@ namespace Tests
             return JsonConvert.DeserializeObject<TestTable>(json);
         }
 
+        private class TestWeekday : Weekday
+        {
+            [JsonProperty("Name")]
+            public string DayName { get; set; }
+        }
+
         private class TestTable : Table
         {
-            public TestTable() : base(Enumerable.Empty<Weekday>())
+            public TestTable() : base(Enumerable.Empty<TestWeekday>())
             {
+            }
+
+            public TestWeekday[] Weekdays
+            {
+                get { return Days.Cast<TestWeekday>().ToArray(); }
+                set { Days = value; }
             }
         }
     }
