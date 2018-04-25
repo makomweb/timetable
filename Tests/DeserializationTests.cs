@@ -11,21 +11,21 @@ namespace Tests
     public class DeserializationTests
     {
         [TestMethod]
-        public void When_deserializing_table_should_be_available()
+        public void Deserialized_table_should_not_be_null()
         {
             var table = Deserialize("TimeTable.json");
             Assert.IsNotNull(table, "table should not be null!");
         }
 
         [TestMethod]
-        public void When_deserializing_block_start_time_should_be_available()
+        public void Deserialized_block_start_time_should_be_available()
         {
             var table = Deserialize("TimeTable.json");
             Assert.IsNotNull(table.StartTimes, "Block start times should not be null!");
         }
 
         [TestMethod]
-        public void When_deserializing_block_should_contain_subject_name()
+        public void Deserialized_block_should_contain_subject_name()
         {
             var table = Deserialize("TimeTable.json");
             var block = table.Weekdays.First().Blocks.First();
