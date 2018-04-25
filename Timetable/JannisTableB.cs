@@ -22,7 +22,7 @@ namespace Timetable
             var wednesday = dayFactory.CreateWeekday("Wednesday", "Englisch", "Musik", "Sport", "Französisch");
             weekdays.Add(wednesday);
 
-            var thursday = dayFactory.CreateWeekday("Thursday", "Deutsch", "Chemie/Physik", "Geschichte", "Kunst");
+            var thursday = dayFactory.CreateWeekday("Thursday", "Geschichte", "Chemie/Physik", "Deutsch", "Kunst");
             weekdays.Add(thursday);
 
             var friday = dayFactory.CreateWeekday("Friday", "Sport", "Biologie", "Mathematik");

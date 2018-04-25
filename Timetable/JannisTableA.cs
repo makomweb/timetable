@@ -13,10 +13,10 @@ namespace Timetable
             var weekdays = new List<Weekday>();
 
             var dayFactory = DayFactory.Create(BlockStartTimes);
-            var monday = dayFactory.CreateWeekday("Monday", "Deutsch", "Biologie", "Englisch");
+            var monday = dayFactory.CreateWeekday("Monday", null, "Französich", "Englisch", "Deutsch");
             weekdays.Add(monday);
 
-            var tuesday = dayFactory.CreateWeekday("Tuesday", "Mathe", "Französisch", "Chemie/Physik");
+            var tuesday = dayFactory.CreateWeekday("Tuesday", "Mathe", "Erdkunde", "Chemie/Physik");
             weekdays.Add(tuesday);
 
             var wednesday = dayFactory.CreateWeekday("Wednesday", "Geschichte", "Musik", "Sport", "Kunst");
@@ -25,7 +25,7 @@ namespace Timetable
             var thursday = dayFactory.CreateWeekday("Thursday", "Deutsch", "Informatik", "Ethik", "Klassenleiterstunde");
             weekdays.Add(thursday);
 
-            var friday = dayFactory.CreateWeekday("Friday", "Erdkunde", "Französisch", "Mathe", "Begabten");
+            var friday = dayFactory.CreateWeekday("Friday", "Biologie", "Französisch", "Mathe");
             weekdays.Add(friday);
 
             return weekdays;
