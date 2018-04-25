@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Linq;
 using Timetable;
@@ -36,6 +37,38 @@ namespace Tests
             var path = Path.Combine("Data", fileName);
             var json = File.ReadAllText(path);
             return JsonConvert.DeserializeObject<Deserialized.Table>(json);
+        }
+    }
+
+    public class Conversion
+    {
+        private readonly Deserialized.Table _table;
+
+        public Conversion(Deserialized.Table table)
+        {
+            _table = table;
+        }
+
+        private string BlockType => _table.StartTimes.BlockType;
+
+        public Table TimeTable
+        {
+            get
+            {
+                var weekdays = _table.Weekdays.Select(w => FromDeserialized(w));
+                return new Table(weekdays);
+            }
+        }
+
+        private Weekday FromDeserialized(Deserialized.Weekday day)
+        {
+            return Weekday.Create(day.Name, day.Blocks.Select(b => FromDeserialized(b)));
+        }
+
+        private Block FromDeserialized(Deserialized.Block b)
+        {
+            TimeSpan begin = null;
+            return Block.Create(begin, b.Name, BlockType);
         }
     }
 
