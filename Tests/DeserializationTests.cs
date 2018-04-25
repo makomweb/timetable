@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using System;
 using System.IO;
 using System.Linq;
 using Timetable;
@@ -32,6 +31,14 @@ namespace Tests
             Assert.IsFalse(string.IsNullOrEmpty(block.Name), "Block should contain subject name!");
         }
 
+        [TestMethod]
+        public void Converting_deserialized_table_to_regular_table_should_succeed()
+        {
+            var deserialized = Deserialize("TimeTable.json");
+            var table = TableConvert.FromDeserialized(deserialized);
+            Assert.IsNotNull(table, "Table should not be null!");
+        }
+
         private Deserialized.Table Deserialize(string fileName)
         {
             var path = Path.Combine("Data", fileName);
@@ -40,21 +47,21 @@ namespace Tests
         }
     }
 
-    public class TableConvert
+    public static class TableConvert
     {
-        public Table FromDeserialized(Deserialized.Table table)
+        public static Table FromDeserialized(Deserialized.Table table)
         {
             var blockType = table.StartTimes.BlockType;
             var weekdays = table.Weekdays.Select(w => FromDeserialized(w, blockType));
             return new Table(weekdays);
         }
 
-        private Weekday FromDeserialized(Deserialized.Weekday day, string blockType)
+        private static Weekday FromDeserialized(Deserialized.Weekday day, string blockType)
         {
             return Weekday.Create(day.Name, day.Blocks.Select(b => FromDeserialized(b, blockType)));
         }
 
-        private Block FromDeserialized(Deserialized.Block b, string blockType)
+        private static Block FromDeserialized(Deserialized.Block b, string blockType)
         {
             var begin = BlockStartTime.FromString(b.Begin);
             return Block.Create(begin, b.Name, blockType);
