@@ -7,23 +7,27 @@ namespace WebApp.Controllers
 {
     public class JannisController : ApiController
     {
-        private static DateTime _startDate = new DateTime(2018, 4, 16, 0, 0, 1, DateTimeKind.Utc).Date;
-        private static JannisTableA _startTable = new JannisTableA();
-        private static JannisTableB _alternateTable = new JannisTableB();
-        private AlternateTable _table = new AlternateTable(_startDate, _startTable, _alternateTable);
-        
+        private Table _table = CreateTable();
+
         public HttpResponseMessage Get()
         {
-            var table = _table.Get(DateTime.UtcNow.Date);
-
             try
             {
-                return new CalendarResponseMessage("Europe/Berlin").From(table);
+                return new CalendarResponseMessage("Europe/Berlin").From(_table);
             }
             catch (Exception ex)
             {
                 return JsonResponseMessage.From(ex);
             }
+        }
+
+        private static Table CreateTable()
+        {
+            var startDate = new DateTime(2018, 4, 16, 0, 0, 1, DateTimeKind.Utc).Date;
+            var startTable = new JannisTableA();
+            var alternateTable = new JannisTableB();
+            var table = new AlternateTable(startDate, startTable, alternateTable);
+            return table.Get(DateTime.UtcNow.Date);
         }
     }
 }
