@@ -67,7 +67,7 @@ namespace Tests
 
         private Block FromDeserialized(Deserialized.Block b)
         {
-            TimeSpan begin = null;
+            var begin = BlockStartTime.FromString(b.Begin);
             return Block.Create(begin, b.Name, BlockType);
         }
     }
