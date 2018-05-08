@@ -71,9 +71,9 @@
     <Compile Include="BreakFactory.cs" />
     <Compile Include="BreakStartTime.cs" />
     <Compile Include="DayFactory.cs" />
-    <Compile Include="Deserialized\Block.cs" />
-    <Compile Include="Deserialized\Table.cs" />
-    <Compile Include="Deserialized\Weekday.cs" />
+    <Compile Include="Persistence\Block.cs" />
+    <Compile Include="Persistence\Table.cs" />
+    <Compile Include="Persistence\Weekday.cs" />
     <Compile Include="DoubleBlock.cs" />
     <Compile Include="Ensure.cs" />
     <Compile Include="Ics.cs" />

@@ -1,6 +1,6 @@
 ﻿using Timetable;
 
-namespace Timetable.Deserialized
+namespace Timetable.Persistence
 {
     public class Table
     {

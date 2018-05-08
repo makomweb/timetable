@@ -1,4 +1,4 @@
-﻿namespace Timetable.Deserialized
+﻿namespace Timetable.Persistence
 {
     public class Block
     {
