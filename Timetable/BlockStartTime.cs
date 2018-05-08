@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Timetable
 {
@@ -15,6 +16,11 @@ namespace Timetable
 
                 _startTimes.Add(ts);
             }
+        }
+
+        public string[] ToArray()
+        {
+            return _startTimes.Select(o => o.ToString()).ToArray();
         }
 
         public static TimeSpan FromString(string time)
