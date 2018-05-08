@@ -8,7 +8,7 @@ namespace Timetable
         {
         }
 
-        private static BlockStartTime BlockStartTimes = new BlockStartTime(new[]
+        public static BlockStartTime BlockStartTimes = new BlockStartTime(new[]
         {
             "07:50:00", "8:45:00", "9:50:00", "10:45:00", "11:55:00", "12:45:00", "13:50:00", "14:40:00"
         });

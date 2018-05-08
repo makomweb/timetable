@@ -7,7 +7,7 @@ namespace Timetable
     {
         public static Table FromPersistenceTable(Persistence.Table table)
         {
-            var blockType = table.StartTimes.BlockType;
+            var blockType = new BlockStartTime(table.BlockStartTimes).BlockType;
             var weekdays = table.Weekdays.Select(w => FromPersistenceDay(w, blockType));
             return new Table(weekdays);
         }
@@ -16,7 +16,7 @@ namespace Timetable
         {
             return new Persistence.Table
             {
-                StartTimes = startTimes,
+                BlockStartTimes = startTimes.ToArray(),
                 Weekdays = ToPersistence(table.Days).ToArray()
             };
         }
