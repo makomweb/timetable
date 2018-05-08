@@ -36,7 +36,7 @@ namespace Tests
         public void Convert_persistence_table_to_regular_table_should_succeed()
         {
             var table = Load("TimeTable.json");
-            var regular = TableConvert.FromPersistence(table);
+            var regular = TableConvert.FromPersistenceTable(table);
             Assert.IsNotNull(regular, "Regular table should not be null!");
         }
 
