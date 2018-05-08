@@ -1,27 +1,24 @@
 ﻿using System;
-using System.Net.Http;
-using System.Web.Http;
-using Timetable;
 
-namespace WebApp.Controllers
+namespace Timetable
 {
-    public class KidsController : ApiController
+    public class TableSelector
     {
         private Table _jannis = CreateJannisTable();
         private Table _toni = new ToniTable();
         private Table _moritz = new MoritzTable();
 
-        public HttpResponseMessage Get()
+        public Table Get(string id)
         {
-            try
+            switch (id)
             {
-                return new CalendarResponseMessage("Europe/Berlin").From(_jannis, _toni, _moritz);
-            }
-            catch (Exception ex)
-            {
-                return JsonResponseMessage.From(ex);
+                case "jannis": return _jannis;
+                case "moritz": return _moritz;
+                case "toni": return _toni;
+                default: throw new NotImplementedException($"Case for ID '{id}' is not yet implemented!");
             }
         }
+
         private static Table CreateJannisTable()
         {
             var startDate = new DateTime(2018, 4, 16, 0, 0, 1, DateTimeKind.Utc).Date;
