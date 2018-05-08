@@ -1,0 +1,103 @@
+{
+    "BlockStartTimes": [
+        "08:00:00",
+        "10:00:00",
+        "12:00:00",
+        "13:45:00"
+    ],
+    "Weekdays": [
+        {
+            "Name": "Monday",
+            "Blocks": [
+                {
+                    "Name": "Französich",
+                    "Begin": "10:00:00"
+                },
+                {
+                    "Name": "Englisch",
+                    "Begin": "12:00:00"
+                },
+                {
+                    "Name": "Deutsch",
+                    "Begin": "13:45:00"
+                }
+            ]
+        },
+        {
+            "Name": "Tuesday",
+            "Blocks": [
+                {
+                    "Name": "Mathe",
+                    "Begin": "08:00:00"
+                },
+                {
+                    "Name": "Erdkunde",
+                    "Begin": "10:00:00"
+                },
+                {
+                    "Name": "Chemie/Physik",
+                    "Begin": "12:00:00"
+                }
+            ]
+        },
+        {
+            "Name": "Wednesday",
+            "Blocks": [
+                {
+                    "Name": "Geschichte",
+                    "Begin": "08:00:00"
+                },
+                {
+                    "Name": "Musik",
+                    "Begin": "10:00:00"
+                },
+                {
+                    "Name": "Sport",
+                    "Begin": "12:00:00"
+                },
+                {
+                    "Name": "Kunst",
+                    "Begin": "13:45:00"
+                }
+            ]
+        },
+        {
+            "Name": "Thursday",
+            "Blocks": [
+                {
+                    "Name": "Deutsch",
+                    "Begin": "08:00:00"
+                },
+                {
+                    "Name": "Informatik",
+                    "Begin": "10:00:00"
+                },
+                {
+                    "Name": "Ethik",
+                    "Begin": "12:00:00"
+                },
+                {
+                    "Name": "Klassenleiterstunde",
+                    "Begin": "13:45:00"
+                }
+            ]
+        },
+        {
+            "Name": "Friday",
+            "Blocks": [
+                {
+                    "Name": "Biologie",
+                    "Begin": "08:00:00"
+                },
+                {
+                    "Name": "Französisch",
+                    "Begin": "10:00:00"
+                },
+                {
+                    "Name": "Mathe",
+                    "Begin": "12:00:00"
+                }
+            ]
+        }
+    ]
+}
