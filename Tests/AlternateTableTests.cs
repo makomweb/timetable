@@ -10,7 +10,7 @@ namespace Tests
         private static DateTime _startDate = new DateTime(2018, 4, 11, 0, 0, 1, DateTimeKind.Utc);
         private static JannisTableA _startTable = new JannisTableA();
         private static JannisTableB _alternateTable = new JannisTableB();
-        private AlternateTable _table = new AlternateTable(_startDate, _startTable, _alternateTable);
+        private WeeklyAlternateTable _table = new WeeklyAlternateTable(_startDate, _startTable, _alternateTable);
 
         [TestMethod]
         public void Same_week_should_show_same_table()

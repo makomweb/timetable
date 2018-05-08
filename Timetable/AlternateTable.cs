@@ -3,13 +3,13 @@ using System.Globalization;
 
 namespace Timetable
 {
-    public class AlternateTable
+    public class WeeklyAlternateTable
     {
         private readonly DateTime _startDate;
         private readonly Table _startTable;
         private readonly Table _alternateTable;
 
-        public AlternateTable(DateTime startDate, Table startTable, Table alternateTable)
+        public WeeklyAlternateTable(DateTime startDate, Table startTable, Table alternateTable)
         {
             _startDate = startDate;
             _startTable = startTable;

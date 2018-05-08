@@ -26,7 +26,7 @@ namespace WebApp.Controllers
             var startDate = new DateTime(2018, 4, 16, 0, 0, 1, DateTimeKind.Utc).Date;
             var startTable = new JannisTableA();
             var alternateTable = new JannisTableB();
-            var table = new AlternateTable(startDate, startTable, alternateTable);
+            var table = new WeeklyAlternateTable(startDate, startTable, alternateTable);
             return table.Get(DateTime.UtcNow.Date);
         }
     }
