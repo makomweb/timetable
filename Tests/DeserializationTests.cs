@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.IO;
 using System.Linq;
+using DeserializedTable = Timetable.Deserialized.Table;
 using Timetable;
 
 namespace Tests
@@ -39,58 +40,11 @@ namespace Tests
             Assert.IsNotNull(table, "Table should not be null!");
         }
 
-        private Deserialized.Table Deserialize(string fileName)
+        private DeserializedTable Deserialize(string fileName)
         {
             var path = Path.Combine("Data", fileName);
             var json = File.ReadAllText(path);
-            return JsonConvert.DeserializeObject<Deserialized.Table>(json);
-        }
-    }
-
-    public static class TableConvert
-    {
-        public static Table FromDeserialized(Deserialized.Table table)
-        {
-            var blockType = table.StartTimes.BlockType;
-            var weekdays = table.Weekdays.Select(w => FromDeserialized(w, blockType));
-            return new Table(weekdays);
-        }
-
-        private static Weekday FromDeserialized(Deserialized.Weekday day, string blockType)
-        {
-            return Weekday.Create(day.Name, day.Blocks.Select(b => FromDeserialized(b, blockType)));
-        }
-
-        private static Block FromDeserialized(Deserialized.Block b, string blockType)
-        {
-            var begin = BlockStartTime.FromString(b.Begin);
-            return Block.Create(begin, b.Name, blockType);
-        }
-    }
-
-    namespace Deserialized
-    {
-        public class Block
-        {
-            public string Name { get; set; }
-
-            public string Begin { get; set; }
-        }
-
-        public class Weekday
-        {
-            public string Name { get; set; }
-
-            public Block[] Blocks { get; set; }
-        }
-
-        public class Table
-        {
-            public string[] BlockStartTimes { get; set; }
-
-            public BlockStartTime StartTimes => new BlockStartTime(BlockStartTimes);
-
-            public Weekday[] Weekdays { get; set; }
+            return JsonConvert.DeserializeObject<DeserializedTable>(json);
         }
     }
 }
