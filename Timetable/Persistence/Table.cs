@@ -1,6 +1,4 @@
-﻿using Timetable;
-
-namespace Timetable.Persistence
+﻿namespace Timetable.Persistence
 {
     public class Table
     {
