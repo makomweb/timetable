@@ -8,7 +8,7 @@ namespace Tests
     public class TimezoneTests
     {
         [TestMethod]
-        public void Run()
+        public void Converting_local_time_object_to_utc_should_give_expected_result()
         {
             string timezoneId = "Europe/Berlin";
             var lt = DateTime.UtcNow;
