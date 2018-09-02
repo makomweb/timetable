@@ -18,19 +18,19 @@ namespace Timetable
             var weekdays = new List<Weekday>();
 
             var dayFactory = DayFactory.Create(BlockStartTimes);
-            var monday = dayFactory.CreateWeekday("Monday", "Deutsch", "Musik", "Mathe", "Kunst", "Sachkunde", "Lebenskunde");
+            var monday = dayFactory.CreateWeekday("Monday", "NaWi", "Musik", "Kunst", "Englisch", "Deutsch", "Mathematik");
             weekdays.Add(monday);
 
-            var tuesday = dayFactory.CreateWeekday("Tuesday", "Sport", "Sport", "Englisch", "Sachkunde", "Mathe", "Deutsch");
+            var tuesday = dayFactory.CreateWeekday("Tuesday", "GeWi", "GeWi", "Mathematik", "Englisch", "Deutsch", "WPU", "WPU");
             weekdays.Add(tuesday);
 
-            var wednesday = dayFactory.CreateWeekday("Wednesday", "Mathe", "Sachkunde", "Deutsch", "Deutsch", "Englisch");
+            var wednesday = dayFactory.CreateWeekday("Wednesday", "Eng", "Deutsch", "Sport", "Sport", "Mathematik", "GeWi");
             weekdays.Add(wednesday);
 
-            var thursday = dayFactory.CreateWeekday("Thursday", "Deutsch", "Mathe", "Kunst", "Lebenskunde", "Sachkunde", "Musik");
+            var thursday = dayFactory.CreateWeekday("Thursday", "Mathematik", "NaWi", "Deutsch", "Musik", "Kunst", "Lebenskunde");
             weekdays.Add(thursday);
 
-            var friday = dayFactory.CreateWeekday("Friday", "Sachkunde", "Englisch", "Sport", "Mathe", "Deutsch", "Deutsch");
+            var friday = dayFactory.CreateWeekday("Friday", "Deutsch", "Englisch", "Sport", "Mathe", "NaWi", "NaWi");
             weekdays.Add(friday);
 
             return weekdays;
