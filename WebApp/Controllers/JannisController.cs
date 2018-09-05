@@ -23,7 +23,7 @@ namespace WebApp.Controllers
 
         private static Table CreateTable()
         {
-            var startDate = new DateTime(2018, 4, 16, 0, 0, 1, DateTimeKind.Utc).Date;
+            var startDate = new DateTime(2018, 8, 27, 0, 0, 1, DateTimeKind.Utc).Date;
             var startTable = new JannisTableA();
             var alternateTable = new JannisTableB();
             var table = new WeeklyAlternateTable(startDate, startTable, alternateTable);
