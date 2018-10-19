@@ -4,7 +4,7 @@ namespace Timetable
 {
     public class MoritzTable : Table
     {
-        public MoritzTable() : base(CreateWeekdays())
+        public MoritzTable() : base("Moritz", CreateWeekdays())
         {
         }
 

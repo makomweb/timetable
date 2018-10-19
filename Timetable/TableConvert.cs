@@ -9,7 +9,7 @@ namespace Timetable
         {
             var blockType = new BlockStartTime(table.BlockStartTimes).BlockType;
             var weekdays = table.Weekdays.Select(w => FromPersistenceDay(w, blockType));
-            return new Table(weekdays);
+            return new Table(table.Id, weekdays);
         }
 
         public static Persistence.Table ToPersistenceTable(BlockStartTime startTimes, Table table)

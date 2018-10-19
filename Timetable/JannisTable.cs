@@ -4,7 +4,7 @@ namespace Timetable
 {
     public abstract class JannisTable : Table
     {
-        protected JannisTable(IEnumerable<Weekday> weekdays) : base(weekdays)
+        protected JannisTable(string id, IEnumerable<Weekday> weekdays) : base(id, weekdays)
         {
         }
 

@@ -8,10 +8,13 @@ namespace Timetable
 {
     public class Table
     {
-        public IEnumerable<Weekday> Days { get; protected set; }
+        public string Id { get; }
 
-        public Table(IEnumerable<Weekday> days)
+        public IEnumerable<Weekday> Days { get; }
+
+        public Table(string id, IEnumerable<Weekday> days)
         {
+            Id = id;
             Days = days;
         }
 

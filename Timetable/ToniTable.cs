@@ -4,7 +4,7 @@ namespace Timetable
 {
     public class ToniTable : Table
     {
-        public ToniTable() : base(CreateWeekdays())
+        public ToniTable() : base("Toni", CreateWeekdays())
         {
         }
 

@@ -4,7 +4,7 @@ namespace Timetable
 {
     public class JannisTableB : JannisTable
     {
-        public JannisTableB() : base(CreateWeekdays())
+        public JannisTableB() : base("Jannis - B", CreateWeekdays())
         {
         }
 
