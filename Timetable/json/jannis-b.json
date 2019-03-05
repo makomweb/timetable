@@ -5,15 +5,19 @@
       "Name": "Monday",
       "Blocks": [
         {
-          "Name": "Deutsch",
+          "Name": "Chemie",
+          "Begin": "8:00:00"
+        },
+        {
+          "Name": "Mathe",
           "Begin": "10:00:00"
         },
         {
-          "Name": "Englisch",
+          "Name": "Deutsch",
           "Begin": "12:00:00"
         },
         {
-          "Name": "Ethik",
+          "Name": "Geschichte",
           "Begin": "13:45:00"
         }
       ]
@@ -26,11 +30,11 @@
           "Begin": "08:00:00"
         },
         {
-          "Name": "Informatik",
+          "Name": "Englisch",
           "Begin": "10:00:00"
         },
         {
-          "Name": "Mathe",
+          "Name": "Geographie",
           "Begin": "12:00:00"
         }
       ]
@@ -39,11 +43,11 @@
       "Name": "Wednesday",
       "Blocks": [
         {
-          "Name": "Englisch",
+          "Name": "Chemie/Physik",
           "Begin": "08:00:00"
         },
         {
-          "Name": "Musik",
+          "Name": "Französisch",
           "Begin": "10:00:00"
         },
         {
@@ -51,7 +55,7 @@
           "Begin": "12:00:00"
         },
         {
-          "Name": "Französisch",
+          "Name": "Kunst",
           "Begin": "13:45:00"
         }
       ]
@@ -60,20 +64,16 @@
       "Name": "Thursday",
       "Blocks": [
         {
-          "Name": "Geschichte",
+          "Name": "Musik",
           "Begin": "08:00:00"
         },
         {
-          "Name": "Chemie/Physik",
+          "Name": "Mathe",
           "Begin": "10:00:00"
         },
         {
           "Name": "Deutsch",
           "Begin": "12:00:00"
-        },
-        {
-          "Name": "Kunst",
-          "Begin": "13:45:00"
         }
       ]
     },
@@ -89,7 +89,7 @@
           "Begin": "10:00:00"
         },
         {
-          "Name": "Mathematik",
+          "Name": "Ethik",
           "Begin": "12:00:00"
         }
       ]
