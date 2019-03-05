@@ -21,9 +21,9 @@ namespace Timetable
 
         private static Table CreateJannisTable()
         {
-            var startDate = new DateTime(2018, 8, 27, 0, 0, 1, DateTimeKind.Utc).Date;
-            var startTable = new JannisTableA();
-            var alternateTable = new JannisTableB();
+            var startDate = new DateTime(2019, 2, 11, 0, 0, 1, DateTimeKind.Utc).Date;
+            var startTable = new JannisTableB();
+            var alternateTable = new JannisTableA();
             var table = new WeeklyAlternateTable(startDate, startTable, alternateTable);
             return table.Get(DateTime.UtcNow.Date);
         }
