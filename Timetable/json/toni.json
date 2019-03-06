@@ -1,153 +1,153 @@
 {
-    "BlockStartTimes": [
-        "07:45:00",
-        "08:40:00",
-        "09:45:00",
-        "10:45:00",
-        "11:50:00",
-        "12:45:00"
-    ],
-    "Weekdays": [
+  "BlockStartTimes": [
+    "07:45:00",
+    "08:40:00",
+    "09:45:00",
+    "10:45:00",
+    "11:50:00",
+    "12:45:00"
+  ],
+  "Weekdays": [
+    {
+      "Name": "Monday",
+      "Blocks": [
         {
-            "Name": "Monday",
-            "Blocks": [
-                {
-                    "Name": "Deutsch",
-                    "Begin": "07:45:00"
-                },
-                {
-                    "Name": "Musik",
-                    "Begin": "08:40:00"
-                },
-                {
-                    "Name": "Mathe",
-                    "Begin": "09:45:00"
-                },
-                {
-                    "Name": "Kunst",
-                    "Begin": "10:45:00"
-                },
-                {
-                    "Name": "Sachkunde",
-                    "Begin": "11:50:00"
-                },
-                {
-                    "Name": "Lebenskunde",
-                    "Begin": "12:45:00"
-                }
-            ]
+          "Name": "Deutsch",
+          "Begin": "07:45:00"
         },
         {
-            "Name": "Tuesday",
-            "Blocks": [
-                {
-                    "Name": "Sport",
-                    "Begin": "07:45:00"
-                },
-                {
-                    "Name": "Sport",
-                    "Begin": "08:40:00"
-                },
-                {
-                    "Name": "Englisch",
-                    "Begin": "09:45:00"
-                },
-                {
-                    "Name": "Sachkunde",
-                    "Begin": "10:45:00"
-                },
-                {
-                    "Name": "Mathe",
-                    "Begin": "11:50:00"
-                },
-                {
-                    "Name": "Deutsch",
-                    "Begin": "12:45:00"
-                }
-            ]
+          "Name": "Musik",
+          "Begin": "08:40:00"
         },
         {
-            "Name": "Wednesday",
-            "Blocks": [
-                {
-                    "Name": "Mathe",
-                    "Begin": "07:45:00"
-                },
-                {
-                    "Name": "Sachkunde",
-                    "Begin": "08:40:00"
-                },
-                {
-                    "Name": "Deutsch",
-                    "Begin": "09:45:00"
-                },
-                {
-                    "Name": "Deutsch",
-                    "Begin": "10:45:00"
-                },
-                {
-                    "Name": "Englisch",
-                    "Begin": "11:50:00"
-                }
-            ]
+          "Name": "Mathe",
+          "Begin": "09:45:00"
         },
         {
-            "Name": "Thursday",
-            "Blocks": [
-                {
-                    "Name": "Deutsch",
-                    "Begin": "07:45:00"
-                },
-                {
-                    "Name": "Mathe",
-                    "Begin": "08:40:00"
-                },
-                {
-                    "Name": "Kunst",
-                    "Begin": "09:45:00"
-                },
-                {
-                    "Name": "Lebenskunde",
-                    "Begin": "10:45:00"
-                },
-                {
-                    "Name": "Sachkunde",
-                    "Begin": "11:50:00"
-                },
-                {
-                    "Name": "Musik",
-                    "Begin": "12:45:00"
-                }
-            ]
+          "Name": "Kunst",
+          "Begin": "10:45:00"
         },
         {
-            "Name": "Friday",
-            "Blocks": [
-                {
-                    "Name": "Sachkunde",
-                    "Begin": "07:45:00"
-                },
-                {
-                    "Name": "Englisch",
-                    "Begin": "08:40:00"
-                },
-                {
-                    "Name": "Sport",
-                    "Begin": "09:45:00"
-                },
-                {
-                    "Name": "Mathe",
-                    "Begin": "10:45:00"
-                },
-                {
-                    "Name": "Deutsch",
-                    "Begin": "11:50:00"
-                },
-                {
-                    "Name": "Deutsch",
-                    "Begin": "12:45:00"
-                }
-            ]
+          "Name": "Sachkunde",
+          "Begin": "11:50:00"
+        },
+        {
+          "Name": "Lebenskunde",
+          "Begin": "12:45:00"
         }
-    ]
+      ]
+    },
+    {
+      "Name": "Tuesday",
+      "Blocks": [
+        {
+          "Name": "Sport",
+          "Begin": "07:45:00"
+        },
+        {
+          "Name": "Sport",
+          "Begin": "08:40:00"
+        },
+        {
+          "Name": "Englisch",
+          "Begin": "09:45:00"
+        },
+        {
+          "Name": "Sachkunde",
+          "Begin": "10:45:00"
+        },
+        {
+          "Name": "Mathe",
+          "Begin": "11:50:00"
+        },
+        {
+          "Name": "Deutsch",
+          "Begin": "12:45:00"
+        }
+      ]
+    },
+    {
+      "Name": "Wednesday",
+      "Blocks": [
+        {
+          "Name": "Mathe",
+          "Begin": "07:45:00"
+        },
+        {
+          "Name": "Sachkunde",
+          "Begin": "08:40:00"
+        },
+        {
+          "Name": "Deutsch",
+          "Begin": "09:45:00"
+        },
+        {
+          "Name": "Deutsch",
+          "Begin": "10:45:00"
+        },
+        {
+          "Name": "Englisch",
+          "Begin": "11:50:00"
+        }
+      ]
+    },
+    {
+      "Name": "Thursday",
+      "Blocks": [
+        {
+          "Name": "Deutsch",
+          "Begin": "07:45:00"
+        },
+        {
+          "Name": "Mathe",
+          "Begin": "08:40:00"
+        },
+        {
+          "Name": "Kunst",
+          "Begin": "09:45:00"
+        },
+        {
+          "Name": "Lebenskunde",
+          "Begin": "10:45:00"
+        },
+        {
+          "Name": "Sachkunde",
+          "Begin": "11:50:00"
+        },
+        {
+          "Name": "Musik",
+          "Begin": "12:45:00"
+        }
+      ]
+    },
+    {
+      "Name": "Friday",
+      "Blocks": [
+        {
+          "Name": "Sachkunde",
+          "Begin": "07:45:00"
+        },
+        {
+          "Name": "Englisch",
+          "Begin": "08:40:00"
+        },
+        {
+          "Name": "Sport",
+          "Begin": "09:45:00"
+        },
+        {
+          "Name": "Mathe",
+          "Begin": "10:45:00"
+        },
+        {
+          "Name": "Deutsch",
+          "Begin": "11:50:00"
+        },
+        {
+          "Name": "Deutsch",
+          "Begin": "12:45:00"
+        }
+      ]
+    }
+  ]
 }
