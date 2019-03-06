@@ -1,33 +1,12 @@
-﻿using System;
-using System.Net.Http;
-using System.Web.Http;
-using Timetable;
+﻿using System.Net.Http;
 
 namespace WebApp.Controllers
 {
-    public class JannisController : ApiController
+    public class JannisController : TimetableController
     {
-        private Table _table = CreateTable();
-
         public HttpResponseMessage Get()
         {
-            try
-            {
-                return new CalendarResponseMessage("Europe/Berlin").From(_table);
-            }
-            catch (Exception ex)
-            {
-                return JsonResponseMessage.From(ex);
-            }
-        }
-
-        private static Table CreateTable()
-        {
-            var startDate = new DateTime(2018, 8, 27, 0, 0, 1, DateTimeKind.Utc).Date;
-            var startTable = new JannisTableA();
-            var alternateTable = new JannisTableB();
-            var table = new WeeklyAlternateTable(startDate, startTable, alternateTable);
-            return table.Get(DateTime.UtcNow.Date);
+            return Get("jannis");
         }
     }
 }
