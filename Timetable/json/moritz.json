@@ -1,175 +1,175 @@
 {
-    "BlockStartTimes": [
-        "07:50:00",
-        "08:45:00",
-        "09:50:00",
-        "10:45:00",
-        "11:55:00",
-        "12:45:00",
-        "13:50:00",
-        "14:40:00"
-    ],
-    "Weekdays": [
+  "BlockStartTimes": [
+    "07:50:00",
+    "08:45:00",
+    "09:50:00",
+    "10:45:00",
+    "11:55:00",
+    "12:45:00",
+    "13:50:00",
+    "14:40:00"
+  ],
+  "Weekdays": [
+    {
+      "Name": "Monday",
+      "Blocks": [
         {
-            "Name": "Monday",
-            "Blocks": [
-                {
-                    "Name": "WPU",
-                    "Begin": "07:50:00"
-                },
-                {
-                    "Name": "WPU",
-                    "Begin": "08:45:00"
-                },
-                {
-                    "Name": "Sport",
-                    "Begin": "09:50:00"
-                },
-                {
-                    "Name": "Sport",
-                    "Begin": "10:45:00"
-                },
-                {
-                    "Name": "Kunst",
-                    "Begin": "11:55:00"
-                },
-                {
-                    "Name": "Ethik",
-                    "Begin": "12:45:00"
-                },
-                {
-                    "Name": "Biologie",
-                    "Begin": "13:50:00"
-                }
-            ]
+          "Name": "WPU",
+          "Begin": "07:50:00"
         },
         {
-            "Name": "Tuesday",
-            "Blocks": [
-                {
-                    "Name": "Ethik",
-                    "Begin": "07:50:00"
-                },
-                {
-                    "Name": "Musik",
-                    "Begin": "08:45:00"
-                },
-                {
-                    "Name": "Deutsch",
-                    "Begin": "09:50:00"
-                },
-                {
-                    "Name": "Deutsch/Geschichte/ITG",
-                    "Begin": "10:45:00"
-                },
-                {
-                    "Name": "ITG/WAT",
-                    "Begin": "11:55:00"
-                },
-                {
-                    "Name": "WAT",
-                    "Begin": "12:45:00"
-                },
-                {
-                    "Name": "Geo",
-                    "Begin": "13:50:00"
-                }
-            ]
+          "Name": "WPU",
+          "Begin": "08:45:00"
         },
         {
-            "Name": "Wednesday",
-            "Blocks": [
-                {
-                    "Name": "Französisch",
-                    "Begin": "07:50:00"
-                },
-                {
-                    "Name": "Englisch",
-                    "Begin": "08:45:00"
-                },
-                {
-                    "Name": "Mathematik",
-                    "Begin": "09:50:00"
-                },
-                {
-                    "Name": "Mathematik",
-                    "Begin": "10:45:00"
-                },
-                {
-                    "Name": "Sport",
-                    "Begin": "11:55:00"
-                },
-                {
-                    "Name": "Kunst",
-                    "Begin": "12:45:00"
-                },
-                {
-                    "Name": "AG",
-                    "Begin": "13:50:00"
-                },
-                {
-                    "Name": "AG",
-                    "Begin": "14:40:00"
-                }
-            ]
+          "Name": "Sport",
+          "Begin": "09:50:00"
         },
         {
-            "Name": "Thursday",
-            "Blocks": [
-                {
-                    "Name": "Bio/Chemie",
-                    "Begin": "07:50:00"
-                },
-                {
-                    "Name": "Bio/Chemie",
-                    "Begin": "08:45:00"
-                },
-                {
-                    "Name": "Französisch",
-                    "Begin": "09:50:00"
-                },
-                {
-                    "Name": "Französisch",
-                    "Begin": "10:45:00"
-                },
-                {
-                    "Name": "Deutsch",
-                    "Begin": "11:55:00"
-                },
-                {
-                    "Name": "Mathe",
-                    "Begin": "12:45:00"
-                }
-            ]
+          "Name": "Sport",
+          "Begin": "10:45:00"
         },
         {
-            "Name": "Friday",
-            "Blocks": [
-                {
-                    "Name": "Englisch",
-                    "Begin": "07:50:00"
-                },
-                {
-                    "Name": "Englisch",
-                    "Begin": "08:45:00"
-                },
-                {
-                    "Name": "Deutsch",
-                    "Begin": "09:50:00"
-                },
-                {
-                    "Name": "Deutsch",
-                    "Begin": "10:45:00"
-                },
-                {
-                    "Name": "Mathe",
-                    "Begin": "11:55:00"
-                },
-                {
-                    "Name": "Französisch",
-                    "Begin": "12:45:00"
-                }
-            ]
+          "Name": "Kunst",
+          "Begin": "11:55:00"
+        },
+        {
+          "Name": "Klassenrat",
+          "Begin": "12:45:00"
+        },
+        {
+          "Name": "Bio/Ch/Ph",
+          "Begin": "13:50:00"
         }
-    ]
+      ]
+    },
+    {
+      "Name": "Tuesday",
+      "Blocks": [
+        {
+          "Name": "Geschichte",
+          "Begin": "07:50:00"
+        },
+        {
+          "Name": "Musik",
+          "Begin": "08:45:00"
+        },
+        {
+          "Name": "Deutsch",
+          "Begin": "09:50:00"
+        },
+        {
+          "Name": "Deutsch",
+          "Begin": "10:45:00"
+        },
+        {
+          "Name": "ITG/WAT",
+          "Begin": "11:55:00"
+        },
+        {
+          "Name": "ITG/WAT",
+          "Begin": "12:45:00"
+        }
+      ]
+    },
+    {
+      "Name": "Wednesday",
+      "Blocks": [
+        {
+          "Name": "Französisch",
+          "Begin": "07:50:00"
+        },
+        {
+          "Name": "Englisch",
+          "Begin": "08:45:00"
+        },
+        {
+          "Name": "Mathematik",
+          "Begin": "09:50:00"
+        },
+        {
+          "Name": "Mathematik",
+          "Begin": "10:45:00"
+        },
+        {
+          "Name": "Sport",
+          "Begin": "11:55:00"
+        },
+        {
+          "Name": "Ethik",
+          "Begin": "12:45:00"
+        },
+        {
+          "Name": "AG",
+          "Begin": "13:50:00"
+        },
+        {
+          "Name": "AG",
+          "Begin": "14:40:00"
+        }
+      ]
+    },
+    {
+      "Name": "Thursday",
+      "Blocks": [
+        {
+          "Name": "Bio/Ch/Ph",
+          "Begin": "07:50:00"
+        },
+        {
+          "Name": "Bio/Ch/Ph",
+          "Begin": "08:45:00"
+        },
+        {
+          "Name": "Französisch",
+          "Begin": "09:50:00"
+        },
+        {
+          "Name": "Französisch",
+          "Begin": "10:45:00"
+        },
+        {
+          "Name": "Deutsch",
+          "Begin": "11:55:00"
+        },
+        {
+          "Name": "Mathe",
+          "Begin": "12:45:00"
+        },
+        {
+          "Name": "Geo",
+          "Begin": "13:50:00"
+        }
+      ]
+    },
+    {
+      "Name": "Friday",
+      "Blocks": [
+        {
+          "Name": "Englisch",
+          "Begin": "07:50:00"
+        },
+        {
+          "Name": "Englisch",
+          "Begin": "08:45:00"
+        },
+        {
+          "Name": "Deutsch",
+          "Begin": "09:50:00"
+        },
+        {
+          "Name": "Deutsch",
+          "Begin": "10:45:00"
+        },
+        {
+          "Name": "Mathe",
+          "Begin": "11:55:00"
+        },
+        {
+          "Name": "Französisch",
+          "Begin": "12:45:00"
+        }
+      ]
+    }
+  ]
 }
