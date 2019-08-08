@@ -5,29 +5,34 @@ using System.Text;
 
 namespace WebApp.Controllers
 {
-    public class JsonContent : StringContent
+    public class JsonContent<T> : StringContent
     {
         public const string MediaType = "application/json";
 
-        public static JsonContent From<T>(T obj)
+        public JsonContent(T obj) : this(CreateObj(obj))
         {
-            var json = JsonConvert.SerializeObject(obj);
-            return new JsonContent(json);
         }
 
-        public static JsonContent From(Exception exception)
+        public JsonContent(Exception exception) : this(CreateObj(exception))
         {
-            var obj = new
+        }
+
+        protected JsonContent(dynamic json) : base(json, Encoding.UTF8, MediaType)
+        {
+        }
+
+        private static dynamic CreateObj(Exception exception)
+        {
+            return JsonConvert.SerializeObject(obj);
+        }
+
+        private static dynamic CreateObj(Exception exception)
+        {
+            return new
             {
                 message = exception.Message,
                 stack_trace = exception.StackTrace.ToString()
             };
-
-            return From<dynamic>(obj);
-        }
-
-        protected JsonContent(string json) : base(json, Encoding.UTF8, MediaType)
-        {
         }
     }
 }

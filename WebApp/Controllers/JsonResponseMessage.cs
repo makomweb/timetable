@@ -4,22 +4,16 @@ using System.Net.Http;
 
 namespace WebApp.Controllers
 {
-    public static class JsonResponseMessage
+    public class JsonResponseMessage<T> : HttpResponseMessage
     {
-        public static HttpResponseMessage From<T>(T obj)
+        public JsonResponseMessage(T obj) : base(HttpStatusCode.OK)
         {
-            return new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = JsonContent.From(obj)
-            };
+            Content = new JsonContent(obj);
         }
 
-        public static HttpResponseMessage From(Exception exception)
+        public JsonResponseMessage(Exception exception) : base(HttpStatusCode.InternalServerError)
         {
-            return new HttpResponseMessage(HttpStatusCode.InternalServerError)
-            {
-                Content = JsonContent.From(exception)
-            };
+            Content = new JsonContent(exception);
         }
     }
 }
