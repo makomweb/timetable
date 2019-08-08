@@ -7,7 +7,11 @@ namespace WebApp.Controllers
 {
     public class KidsController : ApiController
     {
-        private Table _jannis = new TableSelector().Get("jannis");
+#if true
+        private Table _jannis = new JannisTableA();
+#else
+        private Table _jannis = new JannisTableB();
+#endif
         private Table _toni = new ToniTable();
         private Table _moritz = new MoritzTable();
 
@@ -15,11 +19,11 @@ namespace WebApp.Controllers
         {
             try
             {
-                return new CalendarResponseMessage("Europe/Berlin").From(_jannis, _toni, _moritz);
+                return new CalendarResponseMessage("Europe/Berlin", _jannis, _toni, _moritz);
             }
             catch (Exception ex)
             {
-                return JsonResponseMessage.From(ex);
+                return new JsonResponseMessage(ex);
             }
         }
     }
